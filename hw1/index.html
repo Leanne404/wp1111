@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="./styles.css" /> <!--連接 css 檔-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meet - Sanrio Meeting</title>
+</head>
+<body>
+    <div class="root">
+        <div class = "avatar_anchored">
+            <div id = "anchored_mute">
+                <img src="function/mute_black.png">
+            </div>
+            <div class = "avatar_container">
+                <img id = avatar_myself src="./avatar/cinna.png">
+                <div class ="oval">
+                    <div class="button">
+                        <button class="no_pin"></button>
+                        <button class="pic"></button>
+                        <button class="arrow"></button>
+                    </div>
+                </div>
+            </div> 
+
+            <div id ="anchored_pin">
+                <img src="function/pin.png">
+                <p>你</p>
+            </div>
+            
+            
+        </div>
+    
+        <div class = "avatar_others">
+            <div class="others_container">
+                <div id="others">
+                    <img id = "mute_others" src="function/mute.png">
+                    <img id = "avatar_others" src = "avatar/kitty.png">
+                    <p>Hello Kitty</p>
+                </div>
+                <div id="others">
+                    <img id = "mute_others" src="function/mute.png">
+                    <img id = "avatar_others" src = "avatar/puri.png">
+                    <p>Pom Pom Purin</p>
+                </div>
+                <div id="others">
+                    <img id = "mute_others" src="function/mute.png">
+                    <img id = "avatar_others" src = "avatar/kuromi.png">
+                    <p>Kuromi</p>
+                </div>
+                <div id="others">
+                    <img id = "mute_others" src="function/mute.png">
+                    <img id = "avatar_others" src = "avatar/melody.png">
+                    <p>My Melody</p>
+                </div>
+            </div>
+
+            <div id="five"> 
+                <div id="others">
+                    <img id = "mute_others" src="function/mute.png">
+                    <img id = "avatar_others" src = "avatar/pocha.png">
+                    <p>Pochacco</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class = "foot">
+        <p id = "word_left">晚上9:26 ｜ Sanrio Meeting</p>
+
+        <div class = "bottom_mid_funcs_botton">
+
+            <input type = "checkbox" class = "mute_myself" id = "mute_myself_id">
+            <label class="mute_myself_label" for="mute_myself_id">
+                <div id="tooltips_no_mute"><p>開啟麥克風</p></div>
+                <div id="tooltips_mute"><p>關閉麥克風</p></div>
+            </label>
+
+            <button class = "no_camera_myself"><div id="tooltips_open_camera"><p>開啟攝影機</p></div></button>
+            <button class = "raise_hand"><div id="tooltips_hand"><p>舉手</p></div></button>
+            <button class = "share_screen"><div id="tooltips_share_screen"><p>立即分享螢幕畫面</p></div></button>
+            <button class = "three_dots"><div id="tooptips_dots"><p>更多選項</p></div></button>
+            <button class = "hang_up"><div id="tooltips_hang"><p>退出通話</p></div></button>
+        </div>
+
+        <div class = "bottom_right_funcs_botton">
+            <button class = "info"><div id="tooltips_detail"><p>會議詳細資料</p></div></button>
+            <button class = "people"><div id="tooltips_people"><p>顯示所有參與者</p></div></button>
+            <button class = "chat"><div id="tooltips_chat"><p>與所有參與者進行即時通訊</p></div></button>
+            <button class = "white_board"><div id="tooltips_board"><p>活動</p></div></button>
+            <button class = "lock"><div id="tooltips_lock"><p>主辦人控制項</p></div></button>
+        </div>
+
+    </div>
+</body>
+</html>
+
