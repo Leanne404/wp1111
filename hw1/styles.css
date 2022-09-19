@@ -215,15 +215,15 @@ html, body {
 
 
 
-.avatar_container:hover .oval{
+.avatar_anchored:hover .oval{
     opacity: 0.3;
 }
 
-.avatar_container:hover .button{
+.avatar_anchored:hover .button{
     opacity: 0.7;
 }
 
-.avatar_container:hover .oval:hover{
+.avatar_anchored:hover .oval:hover{
     opacity: 0.8;
 }
 
