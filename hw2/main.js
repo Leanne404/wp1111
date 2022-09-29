@@ -10,7 +10,7 @@ var anchored_exist = 1;
 var new_contain = 0;
 
 function create_others(img_avatar, person_name){
-
+    console.log("creat =",remove_cnt)
     //外框
     var others_person = document.createElement("div");
     others_person.className = "others";
@@ -62,10 +62,11 @@ function create_others(img_avatar, person_name){
     remove_user.addEventListener("click",function(){
         others_person.parentNode.removeChild(others_person);
         remove_cnt--;
-        console.log('removed', remove_cnt)
         if(remove_cnt === 0){
             avatar_myself.src = "avatar/cinna.png";
             anchored_name.innerText = "你";
+            var redunctant_me = document.getElementsByClassName("others")
+            redunctant_me[0].parentNode.removeChild(redunctant_me[0]);
             remove_others();
             if(anchored_exist === 0){
                 appear_anchored();
@@ -141,18 +142,24 @@ for(var i = 0; i < 5; i++){
 
 //移除 anchored 然後重新排版
 avatar_anchored_oval.addEventListener("click",function(){
-    var temp_img = [];
-    var temp_name = [];
-    temp_img[remove_cnt] = avatar_myself.src;
-    temp_name[remove_cnt] = anchored_name.innerText;
-    create_others(temp_img, temp_name);
-    if(remove_cnt !== 0){
-        remove_anchored();
+    if(remove_cnt === 0 && anchored_exist !== 0){
+        console.log("click_ava:",remove_cnt)
     }
-    if(anchored_exist === 0){
-        others_container[0].className = "others_container_new";
-        new_contain = 1;
+    else{
+        var temp_img = [];
+        var temp_name = [];
+        temp_img[remove_cnt] = avatar_myself.src;
+        temp_name[remove_cnt] = anchored_name.innerText;
+        create_others(temp_img, temp_name);
+        if(remove_cnt !== 0){
+            remove_anchored();
+        }
+        if(anchored_exist === 0){
+            others_container[0].className = "others_container_new";
+            new_contain = 1;
+        }
     }
+    console.log("click_ava2:",remove_cnt)
 });
 
 function remove_anchored(){
@@ -236,7 +243,6 @@ set_current_time();
 
 var plus_btn = document.getElementsByClassName("plus_btn");
 plus_btn[0].addEventListener("click",function(){
-    console.log("a", remove_cnt);
     if(remove_cnt > 13){
         alert('max display number')
         return
@@ -245,9 +251,10 @@ plus_btn[0].addEventListener("click",function(){
         avatar_others[0].style.display = "flex";
     }
     create_others(img_avatar, person_name);
-    remove_cnt++;
-    check_typesetting_half();
     console.log(remove_cnt)
+    check_typesetting_half();
+    remove_cnt++;
+    console.log("click plus =",remove_cnt)
 })
 
 
