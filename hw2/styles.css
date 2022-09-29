@@ -399,6 +399,16 @@ html, body {
     filter: brightness(1.2);
 }
 
+.plus_btn{
+    background:url(function/plus_mid.png);
+    background-size: 100%;
+    height: 40px;
+    width: 40px;
+    border-radius: 20%;
+    border: none;
+    margin: 3px;
+}
+
 .bottom_right_funcs_botton{
     display: flex;
     flex-direction: row;

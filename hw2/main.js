@@ -1,6 +1,6 @@
 var others_container = document.getElementsByClassName("others_container");
-var img_avatar = ["avatar/kitty.png", "avatar/puri.png", "avatar/kuromi.png", "avatar/melody.png", "avatar/pocha.png"];
-var person_name = ["Hello Kitty", "Pom Pom Purin", "Kuromi", "My Melody", "Pochacco"];
+var img_avatar = ["avatar/kitty.png", "avatar/puri.png", "avatar/kuromi.png", "avatar/melody.png", "avatar/pocha.png","avatar/kitty.png", "avatar/puri.png", "avatar/kuromi.png", "avatar/melody.png", "avatar/pocha.png","avatar/kitty.png", "avatar/puri.png", "avatar/kuromi.png", "avatar/melody.png", "avatar/pocha.png"];
+var person_name = ["Hello Kitty", "Pom Pom Purin", "Kuromi", "My Melody", "Pochacco","1","2","3","4","5","6","7","8","9","10"];
 var avatar_myself = document.getElementById("avatar_myself");
 var anchored_name = document.getElementById("anchored_name");
 var avatar_anchored_oval = document.getElementById("avatar_anchored_oval");
@@ -10,6 +10,7 @@ var anchored_exist = 1;
 var new_contain = 0;
 
 function create_others(img_avatar, person_name){
+
     //外框
     var others_person = document.createElement("div");
     others_person.className = "others";
@@ -60,8 +61,8 @@ function create_others(img_avatar, person_name){
     //監聽叉叉
     remove_user.addEventListener("click",function(){
         others_person.parentNode.removeChild(others_person);
-        check_typesetting_half();
         remove_cnt--;
+        console.log('removed', remove_cnt)
         if(remove_cnt === 0){
             avatar_myself.src = "avatar/cinna.png";
             anchored_name.innerText = "你";
@@ -69,6 +70,12 @@ function create_others(img_avatar, person_name){
             if(anchored_exist === 0){
                 appear_anchored();
             }
+        }
+        if(anchored_exist === 0){
+            check_typesetting_full();
+        }
+        else{
+            check_typesetting_half();
         }
     });
 
@@ -84,7 +91,6 @@ function create_others(img_avatar, person_name){
             //刪掉旁邊多的人物（被點選的，因為他已經被置頂）
             var avatar_others = avatar_others_img.parentNode;
             avatar_others.parentNode.removeChild(avatar_others);
-
             check_typesetting_half();
         }
         else{
@@ -116,6 +122,7 @@ function create_others(img_avatar, person_name){
     else{
         remove_user.style.visibility = 'visible'; 
     }
+    
 }
 
 //把右邊移除
@@ -126,7 +133,7 @@ function remove_others(){
 
 //原始畫面
 var remove_cnt = 0;
-for(var i = 0; i < 14; i++){
+for(var i = 0; i < 5; i++){
     create_others(img_avatar, person_name);
     remove_cnt++;
     check_typesetting_half();
@@ -151,7 +158,7 @@ avatar_anchored_oval.addEventListener("click",function(){
 function remove_anchored(){
     avatar_anchored[0].style.display= "none";
     anchored_exist = 0;
-    check_typesetting_full()
+    check_typesetting_full();
 };
 
 //anchored 出現
@@ -188,12 +195,10 @@ function check_typesetting_full(){
 
 function check_typesetting_half(){
     //把排版換回來
-    console.log(new_contain,"half");
     if(new_contain === 1){
         var others_container = document.getElementsByClassName("others_container_new");
         others_container[0].className = "others_container";
         new_contain = 0;
-        console.log(new_contain,"b");
     }
     var others_person = document.getElementsByClassName("others");
     for(var i = 0; i < others_person.length; i++){
@@ -207,6 +212,43 @@ function check_typesetting_half(){
         }
     }
 }
+
+function set_current_time(){
+    var timestamp = new Date();
+    var hour = String(timestamp.getHours())
+    var min = String(timestamp.getMinutes()).padStart(2, '0')
+    var day = '早上'
+    if (hour > 12) {
+        hour = hour - 12
+        if(hour < 6){
+            day = '下午'
+        }
+        else{
+            day = "晚上"
+        }
+    }
+    var time = day + hour + ':' + min;
+    var word_left = document.getElementById("word_left");
+    word_left.innerText = time + " ｜ Sanrio Meeting";
+}
+set_current_time();
+
+
+var plus_btn = document.getElementsByClassName("plus_btn");
+plus_btn[0].addEventListener("click",function(){
+    console.log("a", remove_cnt);
+    if(remove_cnt > 13){
+        alert('max display number')
+        return
+    } 
+    if(remove_cnt === 0){
+        avatar_others[0].style.display = "flex";
+    }
+    create_others(img_avatar[remove_cnt], person_name[remove_cnt]);
+    remove_cnt++;
+    check_typesetting_half();
+})
+
 
 /* 
 <div class = "others" id = "others_kitty">
