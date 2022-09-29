@@ -1,6 +1,6 @@
 var others_container = document.getElementsByClassName("others_container");
-var img_avatar = ["avatar/kitty.png", "avatar/puri.png", "avatar/kuromi.png", "avatar/melody.png", "avatar/pocha.png","avatar/kitty.png", "avatar/puri.png", "avatar/kuromi.png", "avatar/melody.png", "avatar/pocha.png","avatar/kitty.png", "avatar/puri.png", "avatar/kuromi.png", "avatar/melody.png", "avatar/pocha.png"];
-var person_name = ["Hello Kitty", "Pom Pom Purin", "Kuromi", "My Melody", "Pochacco","1","2","3","4","5","6","7","8","9","10"];
+var img_avatar = ["avatar/kitty.png", "avatar/puri.png", "avatar/kuromi.png", "avatar/melody.png", "avatar/pocha.png","avatar/kitty.png", "avatar/puri.png", "avatar/kuromi.png", "avatar/melody.png", "avatar/pocha.png","avatar/kitty.png", "avatar/puri.png", "avatar/kuromi.png", "avatar/melody.png"];
+var person_name = ["Hello Kitty", "Pom Pom Purin", "Kuromi", "My Melody", "Pochacco","1","2","3","4","5","6","7","8","9"];
 var avatar_myself = document.getElementById("avatar_myself");
 var anchored_name = document.getElementById("anchored_name");
 var avatar_anchored_oval = document.getElementById("avatar_anchored_oval");
@@ -32,12 +32,12 @@ function create_others(img_avatar, person_name){
     //頭貼
     var avatar_others_img = document.createElement("img");
     avatar_others_img.className = "avatar_others_img";
-    avatar_others_img.src = img_avatar[i];
+    avatar_others_img.src = img_avatar[remove_cnt];
     others_person.appendChild(avatar_others_img);
 
     //字
     var avatar_name = document.createElement("p");
-    avatar_name.innerText = person_name[i];
+    avatar_name.innerText = person_name[remove_cnt];
     others_person.appendChild(avatar_name);
 
     //橢圓
@@ -143,8 +143,8 @@ for(var i = 0; i < 5; i++){
 avatar_anchored_oval.addEventListener("click",function(){
     var temp_img = [];
     var temp_name = [];
-    temp_img[i] = avatar_myself.src;
-    temp_name[i] = anchored_name.innerText;
+    temp_img[remove_cnt] = avatar_myself.src;
+    temp_name[remove_cnt] = anchored_name.innerText;
     create_others(temp_img, temp_name);
     if(remove_cnt !== 0){
         remove_anchored();
@@ -244,9 +244,10 @@ plus_btn[0].addEventListener("click",function(){
     if(remove_cnt === 0){
         avatar_others[0].style.display = "flex";
     }
-    create_others(img_avatar[remove_cnt], person_name[remove_cnt]);
+    create_others(img_avatar, person_name);
     remove_cnt++;
     check_typesetting_half();
+    console.log(remove_cnt)
 })
 
 
