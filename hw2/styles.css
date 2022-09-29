@@ -1,0 +1,845 @@
+*{
+    box-sizing: border-box;
+}
+html, body {
+    height: 100%; 
+    width: 100%;
+    font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background: rgb(32, 33, 36);
+    overflow: hidden;
+    padding: 5px;
+} 
+
+.root{
+    height:90%;
+    display: flex;
+    flex-direction: row;
+}
+
+.avatar_anchored {
+    position: relative;
+    width: 70%;
+    background: rgb(32, 33, 36);  
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 2;    
+}
+
+.avatar_container{
+    border-radius: 50%;
+    width: 160px;
+    height: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#avatar_myself {
+    border-radius: 50%;
+    width: 160px;
+    height: 160px;
+}
+
+.anchored_mute {
+    display: flex;
+    align-self: flex-end;
+    justify-self: flex-start;
+    border-radius: 50%;
+    padding-right: 10px;
+}
+
+.anchored_mute img{
+    width: 25px; 
+    margin-right: 10px;
+    margin-top: 30px;
+}
+
+#anchored_pin {
+    display: flex;
+    align-self: flex-start;
+    justify-self: flex-end;
+    align-items: center;
+    border-radius: 50%;
+    margin-top: 30px;
+}
+
+#anchored_pin img {
+    width: 30px;
+    height: 33px;
+    margin-left: 15px;
+}
+
+#anchored_pin p {
+    color: white;
+    margin-left: 12px;
+}
+
+.avatar_others {
+    width:30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1
+}
+
+.others_container {
+    display: flex;
+    width: 400px;
+    height: 320px;
+    padding: 5px;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+
+}
+.others {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 50%;
+    border: 5px solid rgb(32, 33, 36);
+    background-color: rgb(60, 64, 67);
+    flex-basis: 50%;
+    border-radius: 15px;
+    flex-grow: 0.4;
+    z-index: 0;
+}
+
+.others_container img {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    flex-wrap: wrap;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.others_container_new{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.others_container_new img {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    flex-wrap: wrap;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.avatar_others_img{
+    width: 55px;
+    height: 55px;
+}
+
+.others_above{
+    display: flex;
+    width: 100%;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.mute_others {
+    width: 25px;
+    height: 25px; 
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.others p {
+    align-self: flex-start;
+    color: white;
+    margin-left: 15px;
+    height: 17px;
+}
+
+.remove_user{
+    background:url(function/remove_red.png);
+    background-size: 100%;
+    width: 20px;
+    height: 20px; 
+    border-radius: 50%;
+    margin-left: 10px;
+    margin-top: 10px;
+    border: none;
+}
+
+
+
+.button{
+    position: absolute;
+    z-index: 2;
+    pointer-events: none ;/* oval 被 button 的 div 擋住，用這個解決 */
+    opacity: 0;
+}
+
+.no_pin{
+    background:url(function/no_pin.png);
+    background-position: 5px 1px;
+    background-size: 105%;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: none;
+}
+
+.pic{
+    background:url(function/pic.png);
+    background-position: -1px 1px;
+    background-size: 105%;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: none;
+}
+
+.arrow{
+    background:url(function/arrow.png);
+    background-position: -5px 1px;
+    background-size: 105%;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: none;
+    opacity: 0.5;
+}
+
+.pin_others_mid{
+    background:url(function/pin_others.PNG);
+    background-position: -1px 1px;
+    background-size: 105%;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: none;
+    margin-left: 2.5px;
+}
+
+.mute_others_mid{
+    background:url(function/mute_others.PNG);
+    background-position: -1px 1px;
+    background-size: 105%;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: none;
+    opacity: 0.5;
+}
+
+.remove_others_mid{
+    background:url(function/remove_others.PNG);
+    background-position: -5px 1px;
+    background-size: 105%;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: none;
+    margin-left: 2.5px;
+}
+
+.oval{
+    position: absolute;
+    width:128px;
+    height:45px;
+    background:rgb(0, 0, 0);
+    color:#fff;
+    border-radius: 50px;
+    z-index: 1;
+    opacity: 0;
+}
+
+
+.avatar_anchored:hover .oval{
+    opacity: 0.3;
+}
+
+.avatar_anchored:hover .button{
+    opacity: 0.7;
+}
+
+.avatar_anchored:hover .oval:hover{
+    opacity: 0.8;
+}
+
+.others:hover .oval{
+    opacity: 0.3;
+}
+
+.others:hover .button{
+    opacity: 0.7;
+}
+
+.others:hover .oval:hover{
+    opacity: 0.8;
+}
+
+.bottom_mid_funcs_botton{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.mute_myself{
+    display: none;
+}
+
+.mute_myself + label{
+    background:url(function/mute_full.png) no-repeat;
+    background-size: 100%;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: none;
+    margin: 3px;
+    position: relative;
+}
+
+.mute_myself:checked + label{
+    background:url(function/no_mute_full.png) no-repeat;
+    background-size: 100%;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: none;
+    margin: 3px;
+    position: relative;
+}
+
+
+.mute_myself + label:hover{
+    filter: brightness(1.2);
+}
+
+
+
+.no_camera_myself {
+    background:url(function/no_camera_full.png);
+    background-size: 100%;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: none;
+    margin: 3px;
+}
+
+.no_camera_myself:hover{
+    filter: brightness(1.2);
+}
+
+.raise_hand{
+    background:url(function/raise_hand.png);
+    background-size: 100%;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: none;
+    margin: 3px;
+}
+
+.raise_hand:hover{
+    filter: brightness(1.2);
+}
+
+.share_screen {
+    background:url(function/share_full.png);
+    background-size: 100%;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: none;
+    margin: 3px;
+}
+
+.share_screen:hover{
+    filter: brightness(1.2);
+}
+
+.three_dots {
+    background:url(function/dots_full.png);
+    background-size: 100%;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: none;
+    margin: 3px;
+}
+
+.three_dots:hover{
+    filter: brightness(1.2);
+}
+
+.hang_up {
+    background:url(function/hang_up_full.png);
+    background-size: 100%;
+    height: 40px;
+    width: 50px;
+    border-radius: 20%;
+    border: none;
+    margin: 3px;
+}
+
+.hang_up:hover{
+    filter: brightness(1.2);
+}
+
+.bottom_right_funcs_botton{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.info{
+    background: url(function/info_full.png);
+    background-size: 100%;
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    border: none;
+}
+
+.info:hover{
+    filter: brightness(1.5);
+}
+
+.people{
+    background: url(function/people_full.png);
+    background-size: 100%;
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    border: none;
+}
+
+.people:hover{
+    filter: brightness(1.5);
+}
+
+.chat{
+    background: url(function/chat_full.png);
+    background-size: 100%;
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    border: none;
+}
+
+.chat:hover{
+    filter: brightness(1.5);
+}
+
+.white_board{
+    background: url(function/board_full.png);
+    background-size: 100%;
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;  
+    border: none;
+}
+
+.white_board:hover{
+    filter: brightness(1.5);
+}
+
+.lock{
+    background: url(function/lock_full.png);
+    background-size: 100%;
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    border: none;
+    margin-right: 10px;
+}
+
+.lock:hover{
+    filter: brightness(1.2);
+}
+
+#tooltips_no_mute{
+    position: absolute;
+    top: -80%;
+    left: -35%;
+    width: max-content;
+    background-color: rgb(60, 64, 67);
+    font-size: 10%;
+    margin: 2px;
+    padding: 3px;
+    border-radius: 10%;
+    color: white;
+    opacity: 0;
+    pointer-events: none;
+}
+
+#tooltips_mute{
+    position: absolute;
+    top: -80%;
+    left: -35%;
+    width: max-content;
+    background-color: rgb(60, 64, 67);
+    font-size: 10%;
+    margin: 2px;
+    padding: 3px;
+    border-radius: 10%;
+    color: white;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.mute_myself + label:hover #tooltips_no_mute{
+    opacity: 1;
+}
+
+.mute_myself:checked + label:hover #tooltips_mute{
+    opacity: 1;
+}
+
+#tooltips_open_camera{
+    position: absolute;
+    top: -80%;
+    left: -35%;
+    width: max-content;
+    background-color: rgb(60, 64, 67);
+    font-size: 10%;
+    margin: 2px;
+    padding: 3px;
+    border-radius: 10%;
+    color: white;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.no_camera_myself:hover #tooltips_open_camera{
+    opacity: 1;
+}
+
+#tooltips_hand{
+    position: absolute;
+    top: -80%;
+    left: 10%;
+    width: max-content;
+    background-color: rgb(60, 64, 67);
+    font-size: 10%;
+    margin: 2px;
+    padding: 3px;
+    border-radius: 10%;
+    color: white;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.raise_hand:hover #tooltips_hand{
+    opacity: 1;
+}
+
+#tooltips_share_screen{
+    position: absolute;
+    top: -80%;
+    left: -80%;
+    width: max-content;
+    background-color: rgb(60, 64, 67);
+    font-size: 10%;
+    margin: 2px;
+    padding: 3px;
+    border-radius: 10%;
+    color: white;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.share_screen:hover #tooltips_share_screen{
+    opacity: 1;
+}
+
+#tooptips_dots{
+    position: absolute;
+    top: -80%;
+    left: -25%;
+    width: max-content;
+    background-color: rgb(60, 64, 67);
+    font-size: 10%;
+    margin: 2px;
+    padding: 3px;
+    border-radius: 10%;
+    color: white;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.three_dots:hover #tooptips_dots{
+    opacity: 1;
+}
+
+#tooltips_hang{
+    position: absolute;
+    top: -80%;
+    left: -10%;
+    width: max-content;
+    background-color: rgb(60, 64, 67);
+    font-size: 10%;
+    margin: 2px;
+    padding: 3px;
+    border-radius: 10%;
+    color: white;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.hang_up:hover #tooltips_hang{
+    opacity: 1;
+}
+
+#tooltips_detail{
+    position: absolute;
+    top: -80%;
+    left: -40%;
+    width: max-content;
+    background-color: rgb(60, 64, 67);
+    font-size: 10%;
+    margin: 2px;
+    padding: 3px;
+    border-radius: 10%;
+    color: white;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.info:hover #tooltips_detail{
+    opacity: 1;
+}
+
+#tooltips_people{
+    position: absolute;
+    top: -80%;
+    left: -55%;
+    width: max-content;
+    background-color: rgb(60, 64, 67);
+    font-size: 10%;
+    margin: 2px;
+    padding: 3px;
+    border-radius: 10%;
+    color: white;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.people:hover #tooltips_people{
+    opacity: 1;
+}
+
+#tooltips_chat{
+    position: absolute;
+    top: -80%;
+    left: -110%;
+    width: max-content;
+    background-color: rgb(60, 64, 67);
+    font-size: 10%;
+    margin: 2px;
+    padding: 3px;
+    border-radius: 10%;
+    color: white;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.chat:hover #tooltips_chat{
+    opacity: 1;
+}
+
+#tooltips_board{
+    position: absolute;
+    top: -80%;
+    left: 10%;
+    width: max-content;
+    background-color: rgb(60, 64, 67);
+    font-size: 10%;
+    margin: 2px;
+    padding: 3px;
+    border-radius: 10%;
+    color: white;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.white_board:hover #tooltips_board{
+    opacity: 1;
+}
+
+#tooltips_lock{
+    position: absolute;
+    top: -80%;
+    left: -80%;
+    width: max-content;
+    background-color: rgb(60, 64, 67);
+    font-size: 10%;
+    margin: 2px;
+    padding: 3px;
+    border-radius: 10%;
+    color: white;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.lock:hover #tooltips_lock{
+    opacity: 1;
+}
+
+.foot{
+    height:10%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#word_left{
+    color: white;
+    font-size: 15px;
+    margin-left: 10px;
+}
+
+@media (max-width: 1280px){
+    .avatar_anchored {
+        width: 67%;
+    }
+    .anchored_mute {
+        padding-right: 5%;
+    }
+}
+
+@media (max-width: 1050px){
+    .avatar_anchored {
+        width: 60%;
+    }
+    .anchored_mute {
+        padding-right: 10%;
+    }
+}
+
+@media (max-width: 900px){
+
+    .root{
+        height: 87%;
+        display: flex;
+        flex-direction: column;
+    }
+    .avatar_anchored {
+        width: 100%;
+        height: 60%;
+    }
+    .avatar_others {
+        width:100%;
+        height: 40%;
+        flex-direction: row;
+    }
+    .others_container {
+        width: 600px;
+        height: 160px;
+        padding: 5px;
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+    .others_container > div {
+        width: 100%;
+        height: 100%;
+    }
+    #five{
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@media (max-height: 500px) and  (max-width: 900px){
+    .root{
+        height: 90%;
+        display: flex;
+        flex-direction: row;
+    }
+    .avatar_anchored{
+        width:60%;
+        height:100%;
+    }
+    .avatar_others {
+        width:40%;
+        height:100%;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .others_container {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 250px;
+        height: 150px;
+        position:relative;
+        top:20%
+    }
+    #five{
+        width: 170px;
+        height: 100px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    #five .mute_others{
+        position: relative;
+        left: 45px;
+        top:20px;
+    }
+    #five p{
+        position: relative;
+        right: 50px;
+        bottom:18px;
+    }
+}
+
+@media (max-height: 450px) and  (max-width: 2000px){
+    .avatar_anchored{
+        width:50%;
+        height:90%;
+    }
+    .avatar_others {
+        width:50%;
+        height:90%;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        flex-wrap: nowrap;
+    }
+    #five{
+        width: 100px;
+        height: 180px;
+        position: relative;
+        top:20%;
+    }
+    #five .mute_others{
+        position: relative;
+        left: 10px;
+        top:-10px;
+    }
+    #five p{
+        position: relative;
+        right: 10px;
+        top:20px;
+    }
+
+}
