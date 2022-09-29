@@ -10,7 +10,14 @@ var anchored_exist = 1;
 var new_contain = 0;
 
 function create_others(img_avatar, person_name){
-    console.log("creat =",remove_cnt)
+
+    if(new_contain === 1){
+        var others_container = document.getElementsByClassName("others_container_new");
+    }
+    else{
+        var others_container = document.getElementsByClassName("others_container");
+    }
+
     //外框
     var others_person = document.createElement("div");
     others_person.className = "others";
@@ -65,8 +72,10 @@ function create_others(img_avatar, person_name){
         if(remove_cnt === 0){
             avatar_myself.src = "avatar/cinna.png";
             anchored_name.innerText = "你";
-            var redunctant_me = document.getElementsByClassName("others")
-            redunctant_me[0].parentNode.removeChild(redunctant_me[0]);
+            if(new_contain === 1){
+                var redunctant_me = document.getElementsByClassName("others")
+                redunctant_me[0].parentNode.removeChild(redunctant_me[0]);
+            }
             remove_others();
             if(anchored_exist === 0){
                 appear_anchored();
@@ -250,9 +259,15 @@ plus_btn[0].addEventListener("click",function(){
     if(remove_cnt === 0){
         avatar_others[0].style.display = "flex";
     }
+
     create_others(img_avatar, person_name);
     console.log(remove_cnt)
-    check_typesetting_half();
+    if(anchored_exist === 1){
+        check_typesetting_half();
+    }
+    else{
+        check_typesetting_full();
+    }
     remove_cnt++;
     console.log("click plus =",remove_cnt)
 })
