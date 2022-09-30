@@ -189,25 +189,36 @@ function appear_anchored(){
 function check_typesetting_full(){
     var others_person = document.getElementsByClassName("others");
     for(var j = 0; j < others_person.length; j++){
+        var others_person_img = document.getElementsByClassName("avatar_others_img");
         if(others_person.length <= 4){
             others_person[j].style.flexBasis = "50%";
             others_person[j].style.height = "50%";
+            others_person_img[j].style.height = "100px";
+            others_person_img[j].style.width = "100px";
         }
         else if(others_person.length <= 6){
             others_person[j].style.flexBasis = "33%";
             others_person[j].style.height = "50%";
+            others_person_img[j].style.height = "90px";
+            others_person_img[j].style.width = "90px";
         }
         else if(others_person.length <= 9){
             others_person[j].style.flexBasis = "33%";
             others_person[j].style.height = "33%";
+            others_person_img[j].style.height = "75px";
+            others_person_img[j].style.width = "75px";
         }
         else if(others_person.length <= 12){
             others_person[j].style.flexBasis = "25%";
             others_person[j].style.height = "33%";
+            others_person_img[j].style.height = "65px";
+            others_person_img[j].style.width = "65px";
         }
         else if(others_person.length > 12){
             others_person[j].style.flexBasis = "20%";
             others_person[j].style.height = "33%";
+            others_person_img[j].style.height = "55px";
+            others_person_img[j].style.width = "55px";
         }
     }
 }
@@ -221,13 +232,18 @@ function check_typesetting_half(){
     }
     var others_person = document.getElementsByClassName("others");
     for(var i = 0; i < others_person.length; i++){
+        var others_person_img = document.getElementsByClassName("avatar_others_img");
         if(others_person.length < 8){
             others_person[i].style.flexBasis = "50%";
             others_person[i].style.height = "50%";
+            others_person_img[i].style.height = "55px";
+            others_person_img[i].style.width = "55px";
         }
         else if(others_person.length < 15){
             others_person[i].style.flexBasis = "33%";
             others_person[i].style.height = "45%";
+            others_person_img[i].style.height = "55px";
+            others_person_img[i].style.width = "55px";
         }
     }
 }
