@@ -1,6 +1,6 @@
 var others_container = document.getElementsByClassName("others_container");
-var img_avatar = ["avatar/kitty.png", "avatar/puri.png", "avatar/kuromi.png", "avatar/melody.png", "avatar/pocha.png","avatar/kitty.png", "avatar/puri.png", "avatar/kuromi.png", "avatar/melody.png", "avatar/pocha.png","avatar/kitty.png", "avatar/puri.png", "avatar/kuromi.png", "avatar/melody.png"];
-var person_name = ["Hello Kitty", "Pom Pom Purin", "Kuromi", "My Melody", "Pochacco","1","2","3","4","5","6","7","8","9"];
+var img_avatar = ["avatar/kitty.png", "avatar/puri.png", "avatar/kuromi.png", "avatar/melody.png", "avatar/pocha.png","avatar/twin.jpg", "avatar/tuxedoSam.JPG", "avatar/mocha.JPG", "avatar/keroppi.JPG", "avatar/piano.jpg","avatar/hanGyodon.JPG", "avatar/gudetama.jpg", "avatar/chococat.JPG", "avatar/badtemaru.JPG"];
+var person_name = ["Hello Kitty", "Pom Pom Purin", "Kuromi", "My Melody", "Pochacco","Little Twin Stars","Tuxedo Sam","Mocha","Keroppi","My Sweet Piano","Han-Gyodon","Gudetama","Chococat","Badtemaru"];
 var avatar_myself = document.getElementById("avatar_myself");
 var anchored_name = document.getElementById("anchored_name");
 var avatar_anchored_oval = document.getElementById("avatar_anchored_oval");
