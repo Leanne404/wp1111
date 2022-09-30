@@ -142,8 +142,11 @@ function remove_others(){
 }
 
 //原始畫面
+function getRandom(min,max){
+    return Math.floor(Math.random()*max)+min;
+};
 var remove_cnt = 0;
-for(var i = 0; i < 5; i++){
+for(var i = 0; i < getRandom(1,14); i++){
     create_others(img_avatar, person_name);
     remove_cnt++;
     check_typesetting_half();
