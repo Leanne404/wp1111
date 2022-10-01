@@ -48,7 +48,6 @@ function create_others(img, name){
         pic_used[person_temp] = 1;
     }
     others_person.appendChild(avatar_others_img);
-    console.log("creat",pic_used)
 
     //字
     var avatar_name = document.createElement("p");
@@ -82,18 +81,13 @@ function create_others(img, name){
     //監聽叉叉
     remove_user.addEventListener("click",function(){
         var person_used_name = remove_user.parentNode.parentNode.getElementsByTagName("p")
-        console.log(remove_user.parentNode.parentNode)
         for(var k = 0; k < 14; k++){
             if(person_used_name[0].innerText === person_name[k]){
-                console.log("k",k)
                 pic_used[k] = 0;
-                console.log(person_name[k],person_name[1])
-                console.log("pic = 0",k,pic_used[k])
             }
         }
         others_person.parentNode.removeChild(others_person);
         remove_cnt--;
-        console.log(remove_cnt)
         if(remove_cnt === 0){
             avatar_myself.src = "avatar/cinna.png";
             anchored_name.innerText = "你";
@@ -112,7 +106,6 @@ function create_others(img, name){
         else{
             check_typesetting_half();
         }
-        console.log("delete",pic_used)
     });
 
     //監聽 anchored
@@ -170,7 +163,6 @@ function remove_others(){
 var person_temp = 0;
 var pic_used = new Array(14); 
 for (let i=0; i<14; ++i) pic_used[i] = 0;
-console.log(pic_used)
 
 function check_pic_used(){
     while(pic_used[person_temp] === 1){
@@ -182,7 +174,6 @@ function check_pic_used(){
     if(person_temp > 13){
         person_temp = person_temp - 14;
     }
-    console.log("temp",person_temp)
 }
 
 //原始畫面
@@ -201,7 +192,6 @@ for(var i = 0; i < getRandom(1,14); i++){
 var create_anchored_to_others = 0;
 avatar_anchored_oval.addEventListener("click",function(){
     if(remove_cnt === 0 && anchored_exist !== 0){
-        console.log("click_ava:",remove_cnt)
     }
     else{
         create_anchored_to_others = 1;
@@ -326,7 +316,6 @@ plus_btn[0].addEventListener("click",function(){
     }
 
     create_others(img_avatar, person_name);
-    console.log(remove_cnt)
     if(anchored_exist === 1){
         check_typesetting_half();
     }
@@ -334,118 +323,4 @@ plus_btn[0].addEventListener("click",function(){
         check_typesetting_full();
     }
     remove_cnt++;
-    console.log("click plus =",remove_cnt)
 })
-
-/* 
-<div class = "others" id = "others_kitty">
-    <div class = "others_above">
-        <button class = "remove_user" id = "remove_kitty"></button>
-        <img class = "mute_others" src="function/mute.png">
-    </div>
-    <img class = "avatar_others_img" src = "avatar/kitty.png">
-    <p>Hello Kitty</p>
-    <div class ="oval">
-        <div class="button">
-            <button class="pin_others_mid"></button>
-            <button class="mute_others_mid"></button>
-            <button class="remove_others_mid"></button>
-        </div>
-    </div>
-</div>
-<div class = "others" id = "others_purin">
-    <div class = "others_above">
-        <button class = "remove_user" id = "remove_purin"></button>
-        <img class = "mute_others" src="function/mute.png">
-    </div>
-    <img class = "avatar_others_img" src = "avatar/puri.png">
-    <p>Pom Pom Purin</p>
-    <div class ="oval">
-        <div class="button">
-            <button class="pin_others_mid"></button>
-            <button class="mute_others_mid"></button>
-            <button class="remove_others_mid"></button>
-        </div>
-    </div>
-</div>
-<div class = "others" id = "others_kuromi">
-    <div class = "others_above">
-        <button class = "remove_user" id = "remove_kuromi"></button>
-        <img class = "mute_others" src="function/mute.png">
-    </div>
-    <img class = "avatar_others_img" src = "avatar/kuromi.png">
-    <p>Kuromi</p>
-    <div class ="oval">
-        <div class="button">
-            <button class="pin_others_mid"></button>
-            <button class="mute_others_mid"></button>
-            <button class="remove_others_mid"></button>
-        </div>
-    </div>
-</div>
-<div class = "others" id = "others_melody">
-    <div class = "others_above">
-        <button class = "remove_user" id = "remove_melody"></button>
-        <img class = "mute_others" src="function/mute.png">
-    </div>
-    <img class = "avatar_others_img" src = "avatar/melody.png">
-    <p>My Melody</p>
-    <div class ="oval">
-        <div class="button">
-            <button class="pin_others_mid"></button>
-            <button class="mute_others_mid"></button>
-            <button class="remove_others_mid"></button>
-        </div>
-    </div>
-</div>
-<div class = "others" id = "others_pocha">
-    <div class = "others_above">
-        <button class = "remove_user " id = "remove_pocha"></button>
-        <img class = "mute_others" src="function/mute.png">
-    </div>
-    <img class = "avatar_others_img" src = "avatar/pocha.png">
-    <p>Pochacco</p>
-    <div class ="oval">
-        <div class="button">
-            <button class="pin_others_mid"></button>
-            <button class="mute_others_mid"></button>
-            <button class="remove_others_mid"></button>
-        </div>
-    </div>
-</div>
-*/ 
-
-/*
-function create_anchored(){
-    //外框
-    var avatar_anchored = document.createElement("div");
-    avatar_anchored.className = "avatar_anchored";
-    root[0].appendChild(avatar_anchored);
-
-    //靜音紐
-    var anchored_mute = document.createElement("div");
-    anchored_mute.className = "anchored_mute";
-    avatar_anchored.appendChild(anchored_mute);
-    var anchored_mute_img = document.createElement("img");
-    anchored_mute_img.src = "function/mute_black.png";
-    anchored_mute.appendChild(anchored_mute_img);
-
-    //頭貼
-    var avatar_cotainer = document.createElement("div");
-    avatar_cotainer.className = "avatar_container";
-    avatar_anchored.appendChild(avatar_cotainer);
-}*/
-
-/*
-移除問題：
-1. remove 一個上面四個的，把 div five 裡的東西加進 others container 不知道可不可以
-2.感覺可以直接換頭貼名字ㄟ，然後把背景框框刪掉
-
-pin 問題：
-1. click 了 oval 後，把 others 跟 anchored 裡的元素交換（？）
-2. 或是直接把頭貼跟名字交換？
-
-取消 pin 問題：
-1. 直接寫一個新的排版吧 QQ
-2. pin 回去的話就把東西塞回去原本排版
-*/
