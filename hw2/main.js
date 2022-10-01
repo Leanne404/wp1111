@@ -192,6 +192,7 @@ for(var i = 0; i < getRandom(1,14); i++){
 var create_anchored_to_others = 0;
 avatar_anchored_oval.addEventListener("click",function(){
     if(remove_cnt === 0 && anchored_exist !== 0){
+        return;
     }
     else{
         create_anchored_to_others = 1;
