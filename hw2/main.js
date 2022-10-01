@@ -1,6 +1,6 @@
 var others_container = document.getElementsByClassName("others_container");
-var img_avatar = ["avatar/kitty.png", "avatar/puri.png", "avatar/kuromi.png", "avatar/melody.png", "avatar/pocha.png","avatar/twin.jpg", "avatar/tuxedoSam.JPG", "avatar/mocha.JPG", "avatar/keroppi.JPG", "avatar/piano.jpg","avatar/hanGyodon.JPG", "avatar/gudetama.jpg", "avatar/chococat.JPG", "avatar/badtemaru.JPG"];
-var person_name = ["Hello Kitty", "Pom Pom Purin", "Kuromi", "My Melody", "Pochacco","Little Twin Stars","Tuxedo Sam","Mocha","Keroppi","My Sweet Piano","Han-Gyodon","Gudetama","Chococat","Badtemaru"];
+const img_avatar = ["avatar/kitty.png", "avatar/puri.png", "avatar/kuromi.png", "avatar/melody.png", "avatar/pocha.png","avatar/twin.jpg", "avatar/tuxedoSam.JPG", "avatar/mocha.JPG", "avatar/keroppi.JPG", "avatar/piano.jpg","avatar/hanGyodon.JPG", "avatar/gudetama.jpg", "avatar/chococat.JPG", "avatar/badtemaru.JPG"];
+const person_name = ["Hello Kitty", "Pom Pom Purin", "Kuromi", "My Melody", "Pochacco","Little Twin Stars","Tuxedo Sam","Mocha","Keroppi","My Sweet Piano","Han-Gyodon","Gudetama","Chococat","Badtemaru"];
 var avatar_myself = document.getElementById("avatar_myself");
 var anchored_name = document.getElementById("anchored_name");
 var avatar_anchored_oval = document.getElementById("avatar_anchored_oval");
@@ -9,7 +9,7 @@ var avatar_anchored = document.getElementsByClassName("avatar_anchored");
 var anchored_exist = 1;
 var new_contain = 0;
 
-function create_others(img_avatar, person_name){
+function create_others(img, name){
 
     if(new_contain === 1){
         var others_container = document.getElementsByClassName("others_container_new");
@@ -39,12 +39,26 @@ function create_others(img_avatar, person_name){
     //頭貼
     var avatar_others_img = document.createElement("img");
     avatar_others_img.className = "avatar_others_img";
-    avatar_others_img.src = img_avatar[remove_cnt];
+    if(create_anchored_to_others === 1){
+        avatar_others_img.src = img[remove_cnt];
+    }
+    else{
+        check_pic_used();
+        avatar_others_img.src = img[person_temp];
+        pic_used[person_temp] = 1;
+    }
     others_person.appendChild(avatar_others_img);
+    console.log("creat",pic_used)
 
     //字
     var avatar_name = document.createElement("p");
-    avatar_name.innerText = person_name[remove_cnt];
+    if(create_anchored_to_others === 1){
+        avatar_name.innerText = name[remove_cnt];
+        create_anchored_to_others = 0;
+    }
+    else{
+        avatar_name.innerText = name[person_temp];
+    }
     others_person.appendChild(avatar_name);
 
     //橢圓
@@ -67,8 +81,19 @@ function create_others(img_avatar, person_name){
 
     //監聽叉叉
     remove_user.addEventListener("click",function(){
+        var person_used_name = remove_user.parentNode.parentNode.getElementsByTagName("p")
+        console.log(remove_user.parentNode.parentNode)
+        for(var k = 0; k < 14; k++){
+            if(person_used_name[0].innerText === person_name[k]){
+                console.log("k",k)
+                pic_used[k] = 0;
+                console.log(person_name[k],person_name[1])
+                console.log("pic = 0",k,pic_used[k])
+            }
+        }
         others_person.parentNode.removeChild(others_person);
         remove_cnt--;
+        console.log(remove_cnt)
         if(remove_cnt === 0){
             avatar_myself.src = "avatar/cinna.png";
             anchored_name.innerText = "你";
@@ -87,12 +112,13 @@ function create_others(img_avatar, person_name){
         else{
             check_typesetting_half();
         }
+        console.log("delete",pic_used)
     });
 
     //監聽 anchored
     oval.addEventListener("click",function(){
-
         if(anchored_exist === 0){
+            create_anchored_to_others = 0;
             appear_anchored();
             //把點選的人物換成置頂的
             avatar_myself.src = avatar_others_img.src;
@@ -132,13 +158,31 @@ function create_others(img_avatar, person_name){
     else{
         remove_user.style.visibility = 'visible'; 
     }
-    
 }
 
 //把右邊移除
 var avatar_others = document.getElementsByClassName("avatar_others");
 function remove_others(){
     avatar_others[0].style.display = "none";
+}
+
+//陣列儲存圖片有沒有被用過
+var person_temp = 0;
+var pic_used = new Array(14); 
+for (let i=0; i<14; ++i) pic_used[i] = 0;
+console.log(pic_used)
+
+function check_pic_used(){
+    while(pic_used[person_temp] === 1){
+        person_temp++;
+        if(person_temp > 13){
+            person_temp = person_temp - 14;
+        }
+    }
+    if(person_temp > 13){
+        person_temp = person_temp - 14;
+    }
+    console.log("temp",person_temp)
 }
 
 //原始畫面
@@ -149,15 +193,18 @@ var remove_cnt = 0;
 for(var i = 0; i < getRandom(1,14); i++){
     create_others(img_avatar, person_name);
     remove_cnt++;
+    pic_used[i] = 1;
     check_typesetting_half();
 }
 
 //移除 anchored 然後重新排版
+var create_anchored_to_others = 0;
 avatar_anchored_oval.addEventListener("click",function(){
     if(remove_cnt === 0 && anchored_exist !== 0){
         console.log("click_ava:",remove_cnt)
     }
     else{
+        create_anchored_to_others = 1;
         var temp_img = [];
         var temp_name = [];
         temp_img[remove_cnt] = avatar_myself.src;
@@ -171,7 +218,6 @@ avatar_anchored_oval.addEventListener("click",function(){
             new_contain = 1;
         }
     }
-    console.log("click_ava2:",remove_cnt)
 });
 
 function remove_anchored(){
@@ -290,7 +336,6 @@ plus_btn[0].addEventListener("click",function(){
     remove_cnt++;
     console.log("click plus =",remove_cnt)
 })
-
 
 /* 
 <div class = "others" id = "others_kitty">
