@@ -290,6 +290,9 @@ function set_current_time(){
     var hour = String(timestamp.getHours())
     var min = String(timestamp.getMinutes()).padStart(2, '0')
     var day = '早上'
+    if (hour == 12){
+        day = '中午'
+    }
     if (hour > 12) {
         hour = hour - 12
         if(hour < 6){
