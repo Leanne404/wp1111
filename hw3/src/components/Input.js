@@ -13,7 +13,8 @@ const Input = ({add}) => {
                 return ([...prevData,
                     {
                         input_todo,
-                        id: id.toString()
+                        id: id.toString(),
+                        check_box: false
                     }
                 ])
             })
