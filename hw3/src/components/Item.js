@@ -2,7 +2,7 @@ import { useState } from 'react';
 import x_png from '../img/x.png';
 
 const Item = ({input_todo, id, check_box}) => {
-
+    //console.log("cnt =",todo_cnt+1);
     function click_list(){
         var todos_checkbox = document.getElementById(id)
         var todos = todos_checkbox.parentNode.parentNode.getElementsByClassName("todo-app__item-detail")
@@ -12,6 +12,7 @@ const Item = ({input_todo, id, check_box}) => {
             check_box = true
             todos[0].style.textDecoration = "line-through";
             todos[0].style.opacity = 0.5;
+            global.todoCnt--;
             //console.log("t",check_box)
         }
         else{
@@ -19,6 +20,7 @@ const Item = ({input_todo, id, check_box}) => {
             check_box = false
             todos[0].style.textDecoration = "none";
             todos[0].style.opacity = 1;   
+            global.todoCnt++
             //console.log("f",check_box)
         }
         //console.log("in2",check_box)
