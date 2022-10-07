@@ -3,14 +3,24 @@ import { useState } from "react";
 const Input = ({add}) => {
 
     const [input_todo, setInput_todo] = useState("")
-
+    const [id, setId] = useState(0)
+    
     function addItem(event){
+
         if(event.key === 'Enter'){
             add(function(prevData){
+                setId(id+1)
                 return ([...prevData,
-                    {input_todo}
+                    {
+                        input_todo,
+                        id: id.toString()
+                    }
                 ])
             })
+            function clearInput(){
+                setInput_todo("")
+            }
+            clearInput()
         }
     }
 
