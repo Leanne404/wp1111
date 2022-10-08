@@ -8,7 +8,7 @@ global.todoCnt = 0;
 
 function App() {
   const [note, setNote] = useState([])
-  console.log('app')
+  console.log('app',global.todoCnt)
   return (
     <div className="todo-app__root">
       <Title />
