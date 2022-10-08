@@ -15,6 +15,7 @@ const Input = ({add}) => {
                     add(function(prevData){
                         setId(id + 1)
                         global.todoCnt++
+                        console.log(global.todoCnt);
                         return ([...prevData,
                             {
                                 input_todo,

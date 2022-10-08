@@ -1,6 +1,7 @@
 import Item from './Item'
 
 const List = ({todoList}) => {
+    
     return (
         <div className="todo-app__list">
             {todoList.map((todo_item) => {
@@ -10,9 +11,9 @@ const List = ({todoList}) => {
                     key = {id} 
                     id = {id} 
                     check_box = {check_box}
-                    />)
-        })
-        }
+                    />)      
+                })
+            }
         </div>
     );
 }
