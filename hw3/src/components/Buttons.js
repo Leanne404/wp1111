@@ -4,7 +4,7 @@ const Buttons = () => {
         let todoAppList = document.getElementsByClassName("todo-app__list")[0];
         // console.log(todoAppList)
         let todoAppListItem = todoAppList.getElementsByTagName("li");
-        // gitconsole.log(todoAppListItem)
+        // console.log(todoAppListItem)
         for(let i = 0; i < todoAppListItem.length; i++){
             todoAppListItem[i].style.display = "flex"
         }

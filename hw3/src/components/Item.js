@@ -24,6 +24,7 @@ const Item = ({todoList, input_todo, id, check_box}) => {
             todos[0].style.opacity = 0.5;
             global.todoCnt--;
             cnt.innerText = global.todoCnt + "left"
+            checkCompleteBtn()
             // console.log("t",checkBoxChange)
         }
         else{
@@ -36,6 +37,8 @@ const Item = ({todoList, input_todo, id, check_box}) => {
             todos[0].style.opacity = 1;   
             global.todoCnt++
             cnt.innerText = global.todoCnt + "left"
+            checkCompleteBtn()
+            
             // console.log("f",checkBoxChange)
         }
         //console.log("in2",checkBoxChange)
@@ -45,9 +48,33 @@ const Item = ({todoList, input_todo, id, check_box}) => {
     // console.log("a",is_set)
     check_box = checkBoxChange
     console.log("box",check_box)
+    console.log("b",todoList)
+    
+    function checkCompleteBtn(){
+        let is_check = 0
+        var todoCleanCon = document.getElementsByClassName("todo-app__clean")[0]
+        let todoAppList = document.getElementsByClassName("todo-app__list")[0];
+        let todoAppListItem = todoAppList.getElementsByTagName("li");
+        for(let i = 0; i < todoAppListItem.length; i++){
+            let todoAppListItemText = todoAppListItem[i].getElementsByTagName("h1")[0]
+            console.log("opacity of",i,"=",todoAppListItemText.style.opacity)
+            if(todoAppListItemText.style.opacity === "0.5"){
+                is_check = 1
+                break
+                //console.log("opacity 0.5")
+            }         
+        }
+        if(is_check === 0){
+            todoCleanCon.style.visibility = "hidden"
+        }
+        else{
+            todoCleanCon.style.visibility = "visible"
+        }
+        
+    }
     //todoList[indexTemp].check_box = checkBoxChange
     // console.log("boxInTodo",todoList[indexTemp].check_box )
-    // console.log("b",todoList, indexTemp)
+    
     
     //console.log(check_box)
     // function resetTodo(){
@@ -60,6 +87,7 @@ const Item = ({todoList, input_todo, id, check_box}) => {
     // console.log("temp_out",checkbox_temp)
     // check_box = checkbox_temp
     // console.log("out",check_box)
+
 
     
     return ( 
