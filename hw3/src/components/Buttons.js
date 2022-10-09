@@ -66,6 +66,7 @@ const Buttons = () => {
         for(let j = deleteNum.length - 1; j >= 0; j--){
             todoAppListItem[deleteNum[j]].parentNode.removeChild(todoAppListItem[deleteNum[j]])
         }
+        checkCompleteBtn()
         checkFooter()
     }
 
@@ -75,11 +76,33 @@ const Buttons = () => {
         //console.log(global.todoCnt)
         if(global.todoCnt === 0){
             footer[0].style.visibility = "hidden"
-            todoCleanCon.style.visibility = "hidden"
         }
         else{
             footer[0].style.visibility = "visible"
         }
+    }
+
+    function checkCompleteBtn(){
+        let is_check = 0
+        var todoCleanCon = document.getElementsByClassName("todo-app__clean")[0]
+        let todoAppList = document.getElementsByClassName("todo-app__list")[0];
+        let todoAppListItem = todoAppList.getElementsByTagName("li");
+        for(let i = 0; i < todoAppListItem.length; i++){
+            let todoAppListItemText = todoAppListItem[i].getElementsByTagName("h1")[0]
+            //console.log("opacity of",i,"=",todoAppListItemText.style.opacity)
+            if(todoAppListItemText.style.opacity === "0.5"){
+                is_check = 1
+                break
+                //console.log("opacity 0.5")
+            }         
+        }
+        if(is_check === 0){
+            todoCleanCon.style.visibility = "hidden"
+        }
+        else{
+            todoCleanCon.style.visibility = "visible"
+        }
+        
     }
 
     return (  
