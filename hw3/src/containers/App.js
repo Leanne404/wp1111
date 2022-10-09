@@ -2,13 +2,16 @@ import './App.css';
 import Title from './Title'
 import Main from './Main'
 import Footer from './Footer'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 global.todoCnt = 0;
 
 function App() {
   const [note, setNote] = useState([])
-  console.log('app',global.todoCnt)
+  console.log('app')
+  console.log('note_app',note)
+  
+
   return (
     <div className="todo-app__root">
       <Title />

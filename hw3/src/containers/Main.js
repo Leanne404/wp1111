@@ -4,7 +4,7 @@ import List from '../components/List'
 
 const Main = ({setNote}) => {
     const [todo, setTodo] = useState([]);
-
+    console.log('main')
     function putTodoListOut(event){
         if(event.key === 'Enter'){
             console.log('main')

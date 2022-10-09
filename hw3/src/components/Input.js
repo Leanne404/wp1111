@@ -21,10 +21,11 @@ const Input = ({add}) => {
                                 input_todo,
                                 id: id.toString(),
                                 check_box: false,
+                                index : prevData.length,
                             }
                         ])
                     })
-                    function clearInput(){
+                    function clearInput(){  
                         setInput_todo("")
                     }
                     clearInput()
