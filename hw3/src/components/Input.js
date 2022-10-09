@@ -5,7 +5,8 @@ const Input = ({add}) => {
     const [input_todo, setInput_todo] = useState("")
     const [id, setId] = useState(0)
     var footer = document.getElementsByClassName("todo-app__footer")
-    
+    var cnt = document.getElementsByClassName("todo-count")[0]
+
     function addItem(event){
         if(event.key === 'Enter'){
             if(input_todo === ""){
@@ -15,6 +16,7 @@ const Input = ({add}) => {
                     add(function(prevData){
                         setId(id + 1)
                         global.todoCnt++
+                        cnt.innerText = global.todoCnt + "left"
                         console.log(global.todoCnt);
                         return ([...prevData,
                             {
