@@ -38,13 +38,13 @@ const Item = ({todoList, input_todo, id, check_box}) => {
             cnt.innerText = global.todoCnt + "left"
             // console.log("f",checkBoxChange)
         }
-        console.log("in2",checkBoxChange)
+        //console.log("in2",checkBoxChange)
         //console.log("todo",todos_checkbox.parentNode.parentNode)
     }
     // console.log("boxchange",checkBoxChange)
     // console.log("a",is_set)
     check_box = checkBoxChange
-    // console.log("box",check_box)
+    console.log("box",check_box)
     //todoList[indexTemp].check_box = checkBoxChange
     // console.log("boxInTodo",todoList[indexTemp].check_box )
     // console.log("b",todoList, indexTemp)

@@ -1,5 +1,4 @@
-import View_btn from '../components/View_btn'
-import Clean_btn from '../components/Clean_btn'
+import Buttons from '../components/Buttons'
 
 const Footer = (note) => {
     console.log('footer');
@@ -9,8 +8,7 @@ const Footer = (note) => {
             <div className="todo-app__total">
                 <p className="todo-count">{global.todoCnt + "left"}</p>
             </div>
-            <View_btn />
-            <Clean_btn />
+            <Buttons />
         </footer>
     );
 }
