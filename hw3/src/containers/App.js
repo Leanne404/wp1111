@@ -2,7 +2,6 @@ import './App.css';
 import Title from './Title'
 import Main from './Main'
 import Footer from './Footer'
-import { useEffect, useState } from 'react';
 
 global.todoCnt = 0;
 

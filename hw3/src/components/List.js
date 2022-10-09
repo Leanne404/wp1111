@@ -1,12 +1,9 @@
-import { useState } from 'react';
 import Item from './Item'
 
 const List = ({todoList}) => {
-    
-
     console.log("list")
     return (
-        <div className="todo-app__list">
+        <ul className="todo-app__list" id = "todo-list">
             {todoList.map((todo_item) => {
                 const {input_todo, id, check_box} = todo_item;
                 return(<Item 
@@ -18,7 +15,7 @@ const List = ({todoList}) => {
                     />)      
                 })
             }
-        </div>
+        </ul>
     );
 }
  
