@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import x_png from '../img/x.png';
 
-const Item = ({todoList, input_todo, id, check_box}) => {
+const Item = ({input_todo, id, check_box}) => {
     const [checkBoxChange, setCheckBoxChange] = useState(false)
     // const [indexTemp, setIndexTemp] = useState(0)
     var cnt = document.getElementsByClassName("todo-count")[0]
@@ -48,7 +48,7 @@ const Item = ({todoList, input_todo, id, check_box}) => {
     // console.log("a",is_set)
     check_box = checkBoxChange
     console.log("box",check_box)
-    console.log("b",todoList)
+    //console.log("b",todoList)
     
     function checkCompleteBtn(){
         let is_check = 0
@@ -57,7 +57,7 @@ const Item = ({todoList, input_todo, id, check_box}) => {
         let todoAppListItem = todoAppList.getElementsByTagName("li");
         for(let i = 0; i < todoAppListItem.length; i++){
             let todoAppListItemText = todoAppListItem[i].getElementsByTagName("h1")[0]
-            console.log("opacity of",i,"=",todoAppListItemText.style.opacity)
+            //console.log("opacity of",i,"=",todoAppListItemText.style.opacity)
             if(todoAppListItemText.style.opacity === "0.5"){
                 is_check = 1
                 break
@@ -71,6 +71,40 @@ const Item = ({todoList, input_todo, id, check_box}) => {
             todoCleanCon.style.visibility = "visible"
         }
         
+    }
+
+    function checkFooter(){
+        var footer = document.getElementsByClassName("todo-app__footer")
+        //console.log(global.todoCnt)
+        if(global.todoCnt === 0){
+            footer[0].style.visibility = "hidden"
+        }
+        else{
+            footer[0].style.visibility = "visible"
+        }
+    }
+
+    function deleteTodo(){
+        var todos_checkbox = document.getElementById(id)
+        var todoItem = todos_checkbox.parentNode.parentNode
+        var todoH1 = todoItem.getElementsByTagName("h1")[0]
+        var allTodo = document.getElementsByClassName("todo-app__list")[0]
+        var allTodo_num = allTodo.getElementsByTagName("li").length
+        console.log("todo item =",todoItem)
+        if(todoH1.style.opacity === "0.5"){
+            cnt.innerText = global.todoCnt + "left"
+        }
+        else{
+            global.todoCnt--
+            cnt.innerText = global.todoCnt + "left"
+        }
+        todoItem.parentNode.removeChild(todoItem)
+        console.log("delete")
+        checkCompleteBtn()
+        console.log(allTodo.length - 1)
+        if(allTodo_num  - 1 === 0){
+            checkFooter()
+        }
     }
     //todoList[indexTemp].check_box = checkBoxChange
     // console.log("boxInTodo",todoList[indexTemp].check_box )
@@ -99,7 +133,7 @@ const Item = ({todoList, input_todo, id, check_box}) => {
             <h1 className = "todo-app__item-detail">
                 {input_todo}
             </h1>
-            <img className = "todo-app__item-x" src = {x_png} />               
+            <img onClick = {deleteTodo} className = "todo-app__item-x" src = {x_png} />               
         </li>
      );
 }

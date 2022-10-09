@@ -10,7 +10,6 @@ const List = ({todoList}) => {
             {todoList.map((todo_item) => {
                 const {input_todo, id, check_box} = todo_item;
                 return(<Item 
-                    todoList = {todoList}
                     input_todo = {input_todo} 
                     key = {id} 
                     id = {id} 

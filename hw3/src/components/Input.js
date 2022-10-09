@@ -31,6 +31,7 @@ const Input = ({add}) => {
                     clearInput()
                 }
                 checkFooter()
+                checkCompleteBtn()
             }
         //console.log(global.todoCnt)
     }
@@ -43,6 +44,29 @@ const Input = ({add}) => {
         else{
             footer[0].style.visibility = "visible"
         }
+    }
+
+    function checkCompleteBtn(){
+        let is_check = 0
+        var todoCleanCon = document.getElementsByClassName("todo-app__clean")[0]
+        let todoAppList = document.getElementsByClassName("todo-app__list")[0];
+        let todoAppListItem = todoAppList.getElementsByTagName("li");
+        for(let i = 0; i < todoAppListItem.length; i++){
+            let todoAppListItemText = todoAppListItem[i].getElementsByTagName("h1")[0]
+            //console.log("opacity of",i,"=",todoAppListItemText.style.opacity)
+            if(todoAppListItemText.style.opacity === "0.5"){
+                is_check = 1
+                break
+                //console.log("opacity 0.5")
+            }         
+        }
+        if(is_check === 0){
+            todoCleanCon.style.visibility = "hidden"
+        }
+        else{
+            todoCleanCon.style.visibility = "visible"
+        }
+        
     }
 
     function change_todo(e){

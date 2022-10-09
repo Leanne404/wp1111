@@ -48,6 +48,40 @@ const Buttons = () => {
         // console.log("complete");
     }
 
+    function clearComplete(){
+        let todoAppList = document.getElementsByClassName("todo-app__list")[0];
+        let todoAppListItem = todoAppList.getElementsByTagName("li");
+        let deleteNum = []
+        console.log("len",todoAppListItem.length)
+        for(let i = 0; i < todoAppListItem.length; i++){
+            // console.log(i)
+            let todoAppListItemText = todoAppListItem[i].getElementsByTagName("h1")[0]
+            console.log("opacity of",i,"=",todoAppListItemText.style.opacity)
+            if(todoAppListItemText.style.opacity === "0.5"){
+                // console.log("i=",i)
+                deleteNum.push(i)
+            }
+        }
+        console.log(deleteNum)
+        for(let j = deleteNum.length - 1; j >= 0; j--){
+            todoAppListItem[deleteNum[j]].parentNode.removeChild(todoAppListItem[deleteNum[j]])
+        }
+        checkFooter()
+    }
+
+    function checkFooter(){
+        var footer = document.getElementsByClassName("todo-app__footer")
+        var todoCleanCon = document.getElementsByClassName("todo-app__clean")[0]
+        //console.log(global.todoCnt)
+        if(global.todoCnt === 0){
+            footer[0].style.visibility = "hidden"
+            gtodoCleanCon.style.visibility = "hidden"
+        }
+        else{
+            footer[0].style.visibility = "visible"
+        }
+    }
+
     return (  
         <>
         <ul className="todo-app__view-buttons">
@@ -56,7 +90,7 @@ const Buttons = () => {
             <li><button onClick = {showComplete} className="todo-completed">Completed</button></li>
         </ul>
         <div className="todo-app__clean">
-            <button className="todo-clear-complete">Clear completed</button>
+            <button onClick = {clearComplete} className="todo-clear-complete">Clear completed</button>
         </div>
         </>
     );
