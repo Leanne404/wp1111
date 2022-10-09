@@ -75,7 +75,7 @@ const Buttons = () => {
         //console.log(global.todoCnt)
         if(global.todoCnt === 0){
             footer[0].style.visibility = "hidden"
-            gtodoCleanCon.style.visibility = "hidden"
+            todoCleanCon.style.visibility = "hidden"
         }
         else{
             footer[0].style.visibility = "visible"
