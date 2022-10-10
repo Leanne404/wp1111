@@ -1,70 +1,12 @@
-# Getting Started with Create React App
+## Hw4
+### 基本要求（完成）：
+1. 一開始不會出現 list(<ul class="todo-app__list" id="todo-list">) 以及 footer(<footer class="todo-app__footer" id="todo-footer">)，只有 input(<input class="todo-app__input"> ) 會出現。
+2. 輸入 Todo item 後，按下 enter 會被加入 list 的最後一個，且 checkbox(<div class="todo-app__checkbox">) 初始還未被 check。
+3. 點擊 checkbox 表示 Todo item 已完成，checkbox 變成綠色，內容(<h1 class= "todo-app__item-detail">) text-decoration 和 opacity 改變，再點擊一次 checkbox 可還原為未完成狀態。
+4. 一但輸入 Todo item 時，footer 就會出現，顯示未完成數量(<div class="todo-app__total">)。而 view buttons(<ul class="todo-app__view-buttons">) 與 clean(<div class="todo-app__clean">)的排列如作業說明排列。
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### 進階要求（完成）：
+1. 當游標 over <li class="todo-app__item"> 時，'X' 符號(<img src="./img/x.png" class="todo-app__item-x">)會出現，點擊符號刪除 Todo item，未完成數量（*left）也隨情況變動。
+2. 若所有 Todo items 被刪光，footer 不顯示。
+3. 點擊 Active 按鈕只顯示 “未完成”；點擊 Complete 按鈕只顯示 “已完成”；點擊 All 按鈕顯示所有的 Todo items。（若所有 Todo items 已完成，點擊 Active 按鈕 footer 仍存在並顯示 0left）
+4. 當 Todo items 不為 0 時，Clear Complete 按鈕才會出現，點擊刪除所有 Todo items。
