@@ -17,7 +17,6 @@ const Input = ({add}) => {
                         setId(id + 1)
                         global.todoCnt++
                         cnt.innerText = global.todoCnt + "left"
-                        console.log(global.todoCnt);
                         return ([...prevData,
                             {
                                 input_todo,
@@ -35,11 +34,9 @@ const Input = ({add}) => {
                 checkFooter()
                 checkCompleteBtn()
             }
-        //console.log(global.todoCnt)
     }
 
     const checkFooter = () =>{
-        //console.log(global.todoCnt)
         if(global.todoCnt === 0){
             footer[0].style.visibility = "hidden"
         }
@@ -55,11 +52,9 @@ const Input = ({add}) => {
         let todoAppListItem = todoAppList.getElementsByTagName("li");
         for(let i = 0; i < todoAppListItem.length; i++){
             let todoAppListItemText = todoAppListItem[i].getElementsByTagName("h1")[0]
-            //console.log("opacity of",i,"=",todoAppListItemText.style.opacity)
             if(todoAppListItemText.style.opacity === "0.5"){
                 is_check = 1
                 break
-                //console.log("opacity 0.5")
             }         
         }
         if(is_check === 0){
@@ -72,7 +67,6 @@ const Input = ({add}) => {
     }
 
     function change_todo(e){
-        //console.log(global.todoCnt)
         setInput_todo(e.target.value)
     }
   

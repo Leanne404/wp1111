@@ -4,8 +4,6 @@ import List from '../components/List'
 
 const Main = () => {
     const [todo, setTodo] = useState([]);
-    console.log('main')
-
     return ( 
         <div className="todo-app__main">
             <Input add = {setTodo} />   

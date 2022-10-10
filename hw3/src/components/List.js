@@ -1,7 +1,6 @@
 import Item from './Item'
 
 const List = ({todoList}) => {
-    console.log("list")
     return (
         <ul className="todo-app__list" id = "todo-list">
             {todoList.map((todo_item) => {
@@ -11,7 +10,6 @@ const List = ({todoList}) => {
                     key = {id} 
                     id = {id} 
                     check_box = {check_box}
-                    // index = {index}
                     />)      
                 })
             }
