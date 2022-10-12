@@ -15,13 +15,12 @@ const HomePage = ({ startGameOnClick, mineNumOnChange, boardSizeOnChange, mineNu
 
   {/* Advanced TODO: Implementation of Difficult Adjustment
                      Some functions may be added here! */}
-
-
+                     
   return (
     <div className='HomeWrapper'>
       <p className='title'>MineSweeper</p>
       {/* Basic TODO:  Implemen start button */}
-
+      <button className='btn' onClick={startGameOnClick}>Start Game</button>
       {/* Advanced TODO: Implementation of Difficult Adjustment
                 Useful Hint: <input type = 'range' min = '...' max = '...' defaultValue = '...'> 
                 Useful Hint: Error color: '#880000', default text color: '#0f0f4b', invisible color: 'transparent' 
