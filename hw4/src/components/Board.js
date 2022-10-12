@@ -69,15 +69,24 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
         // Reminder: Also remember to handle the condition that after you reveal this cell then you win the game.
 
     };
-
+    // console.log("b",board);
+    // board.map((row) => row.map((cell) => console.log(cell)));
     return (
         <div className='boardPage' >
             <div className='boardWrapper' >
                 {/*<h1>This is the board Page!</h1>  /* This line of code is just for testing. Please delete it if you finish this function. */}
                 
                 {/* Advanced TODO: Implement Modal based on the state of `gameOver` */}
+                <div className="boardContainer">
                 <Dashboard />
-                
+                { board.map((row) => (
+                    <div id = {"row"+row[0].x.toString} style = {{display: 'flex'}}>
+                        { row.map((cell) => (
+                            <Cell rowIdx = {cell.x} colIdx = {cell.y} detail = {cell} updateFlag = {cell.flagged} revealCell = {cell.revealed}/>
+                        ))}
+                    </div>
+                ))}
+                </div>
                 {/* Basic TODO: Implement Board 
                 Useful Hint: The board is composed of BOARDSIZE*BOARDSIZE of Cell (2-dimention). So, nested 'map' is needed to implement the board.
                 Reminder: Remember to use the component <Cell> and <Dashboard>. See Cell.js and Dashboard.js for detailed information. */}
