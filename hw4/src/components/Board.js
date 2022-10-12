@@ -14,7 +14,6 @@ import { revealed } from '../util/reveal';
 import createBoard from '../util/createBoard';
 import React, { useEffect, useState } from 'react';
 
-
 const Board = ({ boardSize, mineNum, backToHome }) => {
     const [board, setBoard] = useState([]);                     // An 2-dimentional array. It is used to store the board.
     const [nonMineCount, setNonMineCount] = useState(0);        // An integer variable to store the number of cells whose value are not '💣'.
@@ -30,12 +29,16 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
 
     // Creating a board
     const freshBoard = () => {
+        let boardSize = 8;
+        let mineNum = 10;
         const newBoard = createBoard(boardSize, mineNum);
+        setBoard(newBoard.board)
+        setNonMineCount(boardSize*boardSize - mineNum)
+        setMineLocations(newBoard.mineLocations)
         // Basic TODO: Use `newBoard` created above to set the `Board`.
         // Hint: Read the definition of those Hook useState functions and make good use of them.
-
     }
-
+    
     const restartGame = () => {
         freshBoard();
         setGameOver(false);
@@ -70,10 +73,11 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
     return (
         <div className='boardPage' >
             <div className='boardWrapper' >
-                 <h1>This is the board Page!</h1>  {/* This line of code is just for testing. Please delete it if you finish this function. */}
-
+                {/*<h1>This is the board Page!</h1>  /* This line of code is just for testing. Please delete it if you finish this function. */}
+                
                 {/* Advanced TODO: Implement Modal based on the state of `gameOver` */}
-
+                <Dashboard />
+                
                 {/* Basic TODO: Implement Board 
                 Useful Hint: The board is composed of BOARDSIZE*BOARDSIZE of Cell (2-dimention). So, nested 'map' is needed to implement the board.
                 Reminder: Remember to use the component <Cell> and <Dashboard>. See Cell.js and Dashboard.js for detailed information. */}
