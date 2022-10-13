@@ -22,6 +22,7 @@ export default function Cell({ rowIdx, colIdx, detail, updateFlag, revealCell })
     const ID = rowIdx.toString() + '-' + colIdx.toString()
     return (
         <div
+            key={ID}
             id={ID}
             className='cell'
             style={cellStyle}

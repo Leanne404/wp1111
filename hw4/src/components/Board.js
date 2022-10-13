@@ -65,6 +65,15 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
       newBoard = revealed(newBoard, x, y, nonMineCount);
       setBoard(newBoard.board);
       setNonMineCount(newBoard.nonMineCount);
+      if(board[x][y].value === '💣'){
+        setGameOver(true)
+        
+      }
+      else{
+        if(nonMineCount === 0){
+            setWin(true)
+        }
+      }
     }
     // Basic TODO: Complete the conditions of revealCell (Refer to reveal.js)
     // Hint: If `Hit the mine`, check ...?
