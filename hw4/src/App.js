@@ -6,16 +6,16 @@
   Copyright     [ 2022 10 ]
 ****************************************************************************/
 
-import React from 'react';
-import './App.css';
-import MineSweeper from './containers/MineSweeper';
+import React from "react";
+import "./App.css";
+import MineSweeper from "./containers/MineSweeper";
 
 const App = () => {
   return (
-    <div className='App'>
+    <div className="App">
       <MineSweeper />
     </div>
   );
-}
+};
 
 export default App;

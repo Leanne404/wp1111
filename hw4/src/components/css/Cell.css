@@ -7,7 +7,7 @@
 ****************************************************************************/
 
 * {
-  font-family: 'Futura';
+  font-family: "Futura";
 }
 
 .cell {
@@ -20,8 +20,6 @@
   font-weight: bold;
   cursor: pointer;
 }
-
-;
 
 .cell:hover {
   cursor: pointer;

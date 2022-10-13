@@ -12,7 +12,7 @@ import React from "react";
 // Nothing to do with this file.
 // The input 'detail' of Cell is one single cell which have properties of x, y, value, flagged and revealed.
 export default function Cell({ rowIdx, colIdx, detail, updateFlag, revealCell }) {
-    console.log("cell")
+
     const cellStyle = {
         background: detail.revealed ?
             detail.value === '💣' ? '#880000' : mineCheckPattern(detail.x, detail.y) : checkPattern(detail.x, detail.y),
