@@ -35,6 +35,7 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
     setBoard(newBoard.board);
     setNonMineCount(newBoard.mineLocations.length);
     setMineLocations(newBoard.mineLocations);
+    setRemainFlagNum(mineNum)
     // Basic TODO: Use `newBoard` created above to set the `Board`.
     // Hint: Read the definition of those Hook useState functions and make good use of them.
   };
@@ -52,7 +53,17 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
     // Deep copy of a state
     let newBoard = JSON.parse(JSON.stringify(board));
     let newFlagNum = remainFlagNum;
-
+    if(board[x][y].revealed) return;
+    else if(!newBoard[x][y].flagged && newFlagNum > 0){
+        newBoard[x][y].flagged = true
+        setRemainFlagNum(newFlagNum - 1)
+    }
+    else{
+        newBoard[x][y].flagged = false
+        setRemainFlagNum(newFlagNum + 1)
+    }
+    setBoard(newBoard);
+   
     // Basic TODO: Right Click to add a flag on board[x][y]
     // Remember to check if board[x][y] is able to add a flag (remainFlagNum, board[x][y].revealed)
     // Update board and remainFlagNum in the end
@@ -67,7 +78,6 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
       setNonMineCount(newBoard.nonMineCount);
       if(board[x][y].value === '💣'){
         setGameOver(true)
-        
       }
       else{
         if(nonMineCount === 0){
