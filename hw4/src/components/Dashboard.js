@@ -19,7 +19,7 @@ export default function Dashboard({ remainFlagNum, gameOver }) {
 
   useEffect(() => {
     
-  }, []);
+  }, [remainFlagNum]);
 
   useEffect(() => {
 

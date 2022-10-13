@@ -33,7 +33,7 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
     let mineNum = 10;
     const newBoard = createBoard(boardSize, mineNum);
     setBoard(newBoard.board);
-    setNonMineCount(newBoard.mineLocations.length);
+    setNonMineCount(boardSize*boardSize - mineNum);
     setMineLocations(newBoard.mineLocations);
     setRemainFlagNum(mineNum)
     // Basic TODO: Use `newBoard` created above to set the `Board`.
@@ -53,17 +53,17 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
     // Deep copy of a state
     let newBoard = JSON.parse(JSON.stringify(board));
     let newFlagNum = remainFlagNum;
-    if(board[x][y].revealed) return;
+    if(board[x][y].revealed || gameOver || newFlagNum === 0) return;
     else if(!newBoard[x][y].flagged && newFlagNum > 0){
         newBoard[x][y].flagged = true
-        setRemainFlagNum(newFlagNum - 1)
+        newFlagNum--
     }
     else{
         newBoard[x][y].flagged = false
-        setRemainFlagNum(newFlagNum + 1)
+        newFlagNum++
     }
     setBoard(newBoard);
-   
+    setRemainFlagNum(newFlagNum)
     // Basic TODO: Right Click to add a flag on board[x][y]
     // Remember to check if board[x][y] is able to add a flag (remainFlagNum, board[x][y].revealed)
     // Update board and remainFlagNum in the end
@@ -71,19 +71,20 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
 
   const revealCell = (x, y) => {
     if (board[x][y].revealed || gameOver || board[x][y].flagged) return;
-    let newBoard = JSON.parse(JSON.stringify(board));
     if (!board[x][y].revealed) {
-      newBoard = revealed(newBoard, x, y, nonMineCount);
-      setBoard(newBoard.board);
-      setNonMineCount(newBoard.nonMineCount);
-      if(board[x][y].value === '💣'){
-        setGameOver(true)
-      }
-      else{
-        if(nonMineCount === 0){
-            setWin(true)
+        let newBoard = JSON.parse(JSON.stringify(board));
+        newBoard = revealed(newBoard, x, y, nonMineCount);
+        setBoard(newBoard.board);
+        setNonMineCount(newBoard.newNonMinesCount);
+
+        if(newBoard.board[x][y].value === '💣'){
+            setGameOver(true)
         }
-      }
+        else{
+            if(newBoard.newNonMinesCount === 0 ){
+                setWin(true)
+            }
+        }
     }
     // Basic TODO: Complete the conditions of revealCell (Refer to reveal.js)
     // Hint: If `Hit the mine`, check ...?
@@ -98,7 +99,7 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
 
         {/* Advanced TODO: Implement Modal based on the state of `gameOver` */}
         <div className="boardContainer">
-          <Dashboard />
+          <Dashboard remainFlagNum = {remainFlagNum}/>
           {board.map((row) => (
             <div id={"row" + row[0].x.toString} style={{ display: "flex" }}>
               {row.map((cell) => (
