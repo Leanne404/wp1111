@@ -17,13 +17,18 @@ export default function Dashboard({ remainFlagNum, gameOver }) {
   // Advanced TODO: Implement the timer on the Dashboard
   {/* Useful Hint: Try to understand the difference between time and sTime. */ }
 
-  useEffect(() => {
-    
-  }, [remainFlagNum]);
 
   useEffect(() => {
+    timeIntervalId = setInterval(() => {
+      setTime((time) => time + 1)   
+    }, 1000)
+    return () => clearInterval(timeIntervalId);
+  }, [!gameOver]);
 
-  }, []);
+  useEffect(() => {
+    setSTime(time)
+    setTime(0)
+  }, [gameOver]);
 
 
   return (

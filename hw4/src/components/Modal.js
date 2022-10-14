@@ -12,9 +12,12 @@ import React, { useEffect, useState } from "react";
 export default function Modal({ restartGame, backToHome, win }) {
     const [render, setRender] = useState(false);
     useEffect(() => {
-        setTimeout(() => {
+        const renderTimeOut = setTimeout(() => {
             setRender(true);
         }, 1000);
+        return () => {
+            clearTimeout(renderTimeOut);
+          }
     }, []);
 
     return (

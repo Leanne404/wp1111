@@ -103,7 +103,10 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
             : <></>
         }
         <div className="boardContainer">
-        <Dashboard remainFlagNum = {remainFlagNum}/>
+        <Dashboard 
+            remainFlagNum = {remainFlagNum}
+            gameOver = {gameOver}
+            />
             {board.map((row) => (
                 <div id={"row" + row[0].x.toString} style={{ display: "flex" }}>
                 {row.map((cell) => (
