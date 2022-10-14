@@ -77,6 +77,7 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
         }
         else{
             if(newBoard.newNonMinesCount === 0 ){
+                setGameOver(true)
                 setWin(true)
             }
         }
@@ -93,10 +94,16 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
     <div className="boardPage">
       <div className="boardWrapper">
         {/*<h1>This is the board Page!</h1>  /* This line of code is just for testing. Please delete it if you finish this function. */}
-
-        {/* Advanced TODO: Implement Modal based on the state of `gameOver` */}
+        {gameOver?
+            <Modal 
+                restartGame = {restartGame}
+                backToHome = {backToHome}
+                win = {win}
+            />
+            : <></>
+        }
         <div className="boardContainer">
-          <Dashboard remainFlagNum = {remainFlagNum}/>
+        <Dashboard remainFlagNum = {remainFlagNum}/>
             {board.map((row) => (
                 <div id={"row" + row[0].x.toString} style={{ display: "flex" }}>
                 {row.map((cell) => (
@@ -109,8 +116,9 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
                     />
                 ))}
             </div>
-          ))}
+        ))}
         </div>
+        {/* Advanced TODO: Implement Modal based on the state of `gameOver` */}
         {/* Basic TODO: Implement Board 
                 Useful Hint: The board is composed of BOARDSIZE*BOARDSIZE of Cell (2-dimention). So, nested 'map' is needed to implement the board.
                 Reminder: Remember to use the component <Cell> and <Dashboard>. See Cell.js and Dashboard.js for detailed information. */}

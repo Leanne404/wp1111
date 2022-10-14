@@ -18,9 +18,22 @@ export default function Modal({ restartGame, backToHome, win }) {
     }, []);
 
     return (
+        <div className="modal">
+            <div className="modalWrapper"></div>
+            <div className="modalContent">
+                <div className="modalResult">
+                    {win? <p>WIN</p> : <p>Game Over</p>}
+                </div>
+                <div className="modalBtnWrapper">
+                    <button className='modalBtn' onClick={restartGame}>{win? <p>New Game</p> : <p>Try Again</p>}</button>
+                    <button className='modalBtn' onClick={backToHome}>Back to Home</button>
+                </div>
+            </div>
+            <div className="modalWrapper"></div>
+        </div>
         // Advanced TODO: Implement the structure of Modal
         // Useful Hint: style = {{opacity: 1 or 0 }}
-        {}
+        
         
     );
 }

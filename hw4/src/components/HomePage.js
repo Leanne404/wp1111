@@ -61,7 +61,7 @@ const HomePage = ({ startGameOnClick, mineNumOnChange, boardSizeOnChange, mineNu
             </div>
           </div>
         </div>
-        : <div></div>
+        : <></>
         }
       </div>
       {/* Advanced TODO: Implementation of Difficult Adjustment
