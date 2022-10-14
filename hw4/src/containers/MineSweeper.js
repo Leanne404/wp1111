@@ -23,23 +23,37 @@ const MineSweeper = () => {
 
     // Advanced TODO: Change `mineNum` to the number you send by this function
     const mineNumOnChange = (value) => {
-        
+        setMineNum(value.target.value)
     }
 
     // Advanced TODO: Change `boardSize` to the number you send by this function
     const boardSizeOnChange = (value) => {
-        
+        setBoardSize(value.target.value)
     }
+    
 
     // Advanced TODO: Change `startGame` from true to false when this function is called
     const backToHomeOnClick = () => {
-        
+        setStartGame(false)
     }
 
     return (
         <div className='mineSweeper'>
             {/* Basic TODO: `HomePage` and `Board` will switch based on the mode of `startGame`. If `startGame` is true, show `Board`; else show `HomePage` */}
-            {startGame? <Board /> : <HomePage startGameOnClick = {startGameOnClick}/>}
+            {startGame? 
+            <Board 
+                    mineNum = {mineNum} 
+                    boardSize = {boardSize}
+                    backToHome = {backToHomeOnClick}
+                /> 
+            : <HomePage 
+                        startGameOnClick = {startGameOnClick} 
+                        mineNumOnChange = {mineNumOnChange} 
+                        boardSizeOnChange={boardSizeOnChange} 
+                        mineNum={mineNum} 
+                        boardSize={boardSize}
+                />
+            }
             
             {/* Advanced TODO: pass all parameters into `Board` and `HomePage`*/}
             

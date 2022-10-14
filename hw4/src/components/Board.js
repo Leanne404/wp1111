@@ -29,8 +29,6 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
 
   // Creating a board
   const freshBoard = () => {
-    let boardSize = 8;
-    let mineNum = 10;
     const newBoard = createBoard(boardSize, mineNum);
     setBoard(newBoard.board);
     setNonMineCount(boardSize*boardSize - mineNum);
@@ -53,12 +51,12 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
     // Deep copy of a state
     let newBoard = JSON.parse(JSON.stringify(board));
     let newFlagNum = remainFlagNum;
-    if(board[x][y].revealed || gameOver || newFlagNum === 0) return;
+    if(board[x][y].revealed || gameOver) return;
     else if(!newBoard[x][y].flagged && newFlagNum > 0){
         newBoard[x][y].flagged = true
         newFlagNum--
     }
-    else{
+    else if(newBoard[x][y].flagged){
         newBoard[x][y].flagged = false
         newFlagNum++
     }
@@ -74,9 +72,6 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
     if (!board[x][y].revealed) {
         let newBoard = JSON.parse(JSON.stringify(board));
         newBoard = revealed(newBoard, x, y, nonMineCount);
-        setBoard(newBoard.board);
-        setNonMineCount(newBoard.newNonMinesCount);
-
         if(newBoard.board[x][y].value === '💣'){
             setGameOver(true)
         }
@@ -85,6 +80,8 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
                 setWin(true)
             }
         }
+        setBoard(newBoard.board);
+        setNonMineCount(newBoard.newNonMinesCount);
     }
     // Basic TODO: Complete the conditions of revealCell (Refer to reveal.js)
     // Hint: If `Hit the mine`, check ...?
@@ -100,17 +97,17 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
         {/* Advanced TODO: Implement Modal based on the state of `gameOver` */}
         <div className="boardContainer">
           <Dashboard remainFlagNum = {remainFlagNum}/>
-          {board.map((row) => (
-            <div id={"row" + row[0].x.toString} style={{ display: "flex" }}>
-              {row.map((cell) => (
-                <Cell
-                  rowIdx={cell.x}
-                  colIdx={cell.y}
-                  detail={cell}
-                  updateFlag={updateFlag}
-                  revealCell={revealCell}
-                />
-              ))}
+            {board.map((row) => (
+                <div id={"row" + row[0].x.toString} style={{ display: "flex" }}>
+                {row.map((cell) => (
+                    <Cell
+                        rowIdx={cell.x}
+                        colIdx={cell.y}
+                        detail={cell}
+                        updateFlag={updateFlag}
+                        revealCell={revealCell}
+                    />
+                ))}
             </div>
           ))}
         </div>
