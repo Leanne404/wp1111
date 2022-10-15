@@ -11,7 +11,7 @@ import React from "react";
 
 // Nothing to do with this file.
 // The input 'detail' of Cell is one single cell which have properties of x, y, value, flagged and revealed.
-export default function Cell({ rowIdx, colIdx, detail, updateFlag, revealCell }) {
+export default function Cell({ rowIdx, colIdx, detail, updateFlag, revealCell}) {
 
     const cellStyle = {
         background: detail.revealed ?
@@ -22,7 +22,6 @@ export default function Cell({ rowIdx, colIdx, detail, updateFlag, revealCell })
     const ID = rowIdx.toString() + '-' + colIdx.toString()
     return (
         <div
-            key={ID}
             id={ID}
             className='cell'
             style={cellStyle}

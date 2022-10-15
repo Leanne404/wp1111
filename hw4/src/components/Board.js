@@ -13,6 +13,7 @@ import Dashboard from "./Dashboard";
 import { revealed } from "../util/reveal";
 import createBoard from "../util/createBoard";
 import React, { useEffect, useState } from "react";
+import { v4 } from "uuid"
 
 const Board = ({ boardSize, mineNum, backToHome }) => {
   const [board, setBoard] = useState([]); // An 2-dimentional array. It is used to store the board.
@@ -108,7 +109,7 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
             gameOver = {gameOver}
             />
             {board.map((row) => (
-                <div id={"row" + row[0].x.toString} style={{ display: "flex" }}>
+                <div key = { v4() } id={"row" + row[0].x.toString} style={{ display: "flex" }}>
                 {row.map((cell) => (
                     <Cell
                         rowIdx={cell.x}
@@ -116,7 +117,9 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
                         detail={cell}
                         updateFlag={updateFlag}
                         revealCell={revealCell}
+                        key = { v4() }
                     />
+                    
                 ))}
             </div>
         ))}

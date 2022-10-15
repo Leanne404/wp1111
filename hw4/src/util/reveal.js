@@ -15,7 +15,6 @@ export const revealed = (board, x, y, newNonMinesCount, boardSize, setRemainFlag
         setRemainFlagNum(prev => prev + 1)
       }
       if(cell.value === 0){
-        console.log("yep")
         if(cell.x - 1 >= 0 && !board[cell.x - 1][cell.y].revealed) revealRecursion(board[cell.x - 1][cell.y])
         if(cell.x - 1 >= 0 && cell.y + 1 < boardSize && !board[cell.x - 1][cell.y + 1].revealed) revealRecursion(board[cell.x - 1][cell.y + 1])
         if(cell.y + 1 < boardSize && !board[cell.x][cell.y + 1].revealed) revealRecursion(board[cell.x][cell.y + 1])
