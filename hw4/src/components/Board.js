@@ -71,7 +71,7 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
     if (board[x][y].revealed || gameOver || board[x][y].flagged) return;
     if (!board[x][y].revealed) {
         let newBoard = JSON.parse(JSON.stringify(board));
-        newBoard = revealed(newBoard, x, y, nonMineCount);
+        newBoard = revealed(newBoard, x, y, nonMineCount, boardSize, setRemainFlagNum);
         if(newBoard.board[x][y].value === '💣'){
             setGameOver(true)
         }

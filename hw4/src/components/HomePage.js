@@ -42,7 +42,7 @@ const HomePage = ({ startGameOnClick, mineNumOnChange, boardSizeOnChange, mineNu
     <div className='HomeWrapper'>
       <p className='title'>MineSweeper</p>
       {/* Basic TODO:  Implemen start button */}
-      <button className='btn' onClick={startGameOnClick}>Start Game</button>
+      <button className='btn' onClick={startGameOnClick} disabled = {error ? true : false}>Start Game</button>
       <div className="controlContainer">
         <button className='btn' onClick={diffAdjClick}>Difficulty Adjustment</button>
         {showPanel ? 
