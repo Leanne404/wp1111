@@ -5,14 +5,14 @@
   Synopsis      [ This file states the reaction when left clicking a cell. ]
   Copyright     [ 2022 10 ]
 ****************************************************************************/
-import { cloneElement } from "react";
+// import { cloneElement } from "react";
 export const revealed = (board, x, y, newNonMinesCount, boardSize, setRemainFlagNum) => {
 
     function revealRecursion(cell){
-      cell.revealed = true;
-      newNonMinesCount--;
-      if(cell.flagged === true){
-        setRemainFlagNum(prev => prev + 1)
+      
+      if(!cell.flagged){
+        cell.revealed = true;
+        newNonMinesCount--;
       }
       if(cell.value === 0){
         if(cell.x - 1 >= 0 && !board[cell.x - 1][cell.y].revealed) revealRecursion(board[cell.x - 1][cell.y])

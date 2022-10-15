@@ -15,7 +15,7 @@ export default function Dashboard({ remainFlagNum, gameOver }) {
   let [sTime, setSTime] = useState(0);
 
   // Advanced TODO: Implement the timer on the Dashboard
-  {/* Useful Hint: Try to understand the difference between time and sTime. */ }
+  //{/* Useful Hint: Try to understand the difference between time and sTime. */ }
 
 
   useEffect(() => {

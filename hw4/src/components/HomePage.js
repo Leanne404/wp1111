@@ -35,8 +35,7 @@ const HomePage = ({ startGameOnClick, mineNumOnChange, boardSizeOnChange, mineNu
     checkError()
   },[mineNum, boardSize])
    
-  {/* Advanced TODO: Implementation of Difficult Adjustment
-                     Some functions may be added here! */}
+  //{/* Advanced TODO: Implementation of Difficult Adjustment Some functions may be added here! */}
                      
   return (
     <div className='HomeWrapper'>
