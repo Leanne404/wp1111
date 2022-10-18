@@ -25,8 +25,7 @@ const Keyboard = ({ usedChars }) => {
     
     return (
         <div className='Keyboard-container'>
-
-
+            
             {/* TODO 1-2: show `firstRowLetters` and `secondRowLetters` */}
             {/* TODO 5: add color to each `Keyboard-char`. */}
             <div id='KBrow_1' key='KBrow_1' className='Keyboard-row'>

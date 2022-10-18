@@ -12,14 +12,13 @@ import React from "react";
 import CurRow from "./CurRow";
 
 const Board = ({ turn, guesses, curGuess }) => {
-    console.log(guesses, turn)
+    console.log("guess =",guesses)
     return (
         <div className="Board-container">
             {
                 guesses.map((row, index) => (
                     <CurRow curGuess = {curGuess} rowIdx = {index} id = {"row_"+index.toString()} key = {"row_"+index.toString()}/>
                 ))
-               
                 
             }
             {/* TODO 2-2: show 6 rows (map function is recommended) and defined row's key.
