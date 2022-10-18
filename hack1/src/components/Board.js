@@ -12,7 +12,7 @@ import React from "react";
 import CurRow from "./CurRow";
 
 const Board = ({ turn, guesses, curGuess }) => {
-    console.log("guess =",guesses)
+    //console.log("guess =",guesses)
     return (
         <div className="Board-container">
             {

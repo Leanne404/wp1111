@@ -2,14 +2,14 @@
   "stats": {
     "suites": 7,
     "tests": 18,
-    "passes": 7,
+    "passes": 10,
     "pending": 0,
-    "failures": 11,
-    "start": "2022-10-18T03:34:22.822Z",
-    "end": "2022-10-18T03:35:18.847Z",
-    "duration": 56025,
+    "failures": 8,
+    "start": "2022-10-18T04:25:13.330Z",
+    "end": "2022-10-18T04:25:56.994Z",
+    "duration": 43664,
     "testsRegistered": 18,
-    "passPercent": 38.88888888888889,
+    "passPercent": 55.55555555555556,
     "pendingPercent": 0,
     "other": 0,
     "hasOther": false,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "08b0a877-ff35-4c87-90c8-09909ddd28b2",
+      "uuid": "1b1e8f7f-80da-4a09-8067-eccea222a373",
       "title": "",
       "fullFile": "cypress/e2e/public.cy.js",
       "file": "cypress/e2e/public.cy.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "e12f6662-2c80-4649-b431-11bd66d4e4c3",
+          "uuid": "caaf5942-dfbd-45bd-b987-6300eeed78e9",
           "title": "Hack#1 Public Test",
           "fullFile": "",
           "file": "",
@@ -36,7 +36,7 @@
           "tests": [],
           "suites": [
             {
-              "uuid": "68e5b4df-9de6-4fbb-987e-a47854c88b31",
+              "uuid": "89a0dd44-aaf3-4801-aa01-a482c5bfac0a",
               "title": "Problem 1",
               "fullFile": "",
               "file": "",
@@ -47,7 +47,7 @@
                   "title": "1-1 Keyboard-container exists and the third row is correct",
                   "fullTitle": "Hack#1 Public Test Problem 1 1-1 Keyboard-container exists and the third row is correct",
                   "timedOut": null,
-                  "duration": 579,
+                  "duration": 535,
                   "state": "passed",
                   "speed": "fast",
                   "pass": true,
@@ -56,8 +56,8 @@
                   "context": null,
                   "code": "cy.get('.Keyboard-container').should('be.visible');",
                   "err": {},
-                  "uuid": "69fafbd7-17a8-4986-b051-98e7fabab770",
-                  "parentUUID": "68e5b4df-9de6-4fbb-987e-a47854c88b31",
+                  "uuid": "bfae0666-e158-4b20-97fe-dcf3da840cc8",
+                  "parentUUID": "89a0dd44-aaf3-4801-aa01-a482c5bfac0a",
                   "isHook": false,
                   "skipped": false
                 },
@@ -65,7 +65,7 @@
                   "title": "1-2-1 Keyboard-container first row correct",
                   "fullTitle": "Hack#1 Public Test Problem 1 1-2-1 Keyboard-container first row correct",
                   "timedOut": null,
-                  "duration": 255,
+                  "duration": 224,
                   "state": "passed",
                   "speed": "fast",
                   "pass": true,
@@ -74,8 +74,8 @@
                   "context": null,
                   "code": "const chars = 'q w e r t y u i o p'.split(' ');\ncy.get('.Keyboard-container > #KBrow_1').should('have.class', 'Keyboard-row').children().should('have.length', 10);\ncy.get('.Keyboard-container > #KBrow_1').children().each(($el, index) => {\n  cy.wrap($el).should('have.text', chars[index]).should('have.id', 'char_' + chars[index]);\n});",
                   "err": {},
-                  "uuid": "84582f60-7914-48c0-824a-0bc581021530",
-                  "parentUUID": "68e5b4df-9de6-4fbb-987e-a47854c88b31",
+                  "uuid": "c929b7a8-ae79-48fc-87c6-5ecc2132d051",
+                  "parentUUID": "89a0dd44-aaf3-4801-aa01-a482c5bfac0a",
                   "isHook": false,
                   "skipped": false
                 },
@@ -92,28 +92,28 @@
                   "context": null,
                   "code": "const chars = 'a s d f g h j k l'.split(' ');\ncy.get('.Keyboard-container > #KBrow_2').should('have.class', 'Keyboard-row').children().should('have.length', 9);\ncy.get('.Keyboard-container > #KBrow_2').children().each(($el, index) => {\n  cy.wrap($el).should('have.text', chars[index]).should('have.id', 'char_' + chars[index]);\n});",
                   "err": {},
-                  "uuid": "fab37844-587e-4ffd-9779-4b423f23d5d2",
-                  "parentUUID": "68e5b4df-9de6-4fbb-987e-a47854c88b31",
+                  "uuid": "5558bd5f-e262-46c4-8a61-a4b64a49f9b0",
+                  "parentUUID": "89a0dd44-aaf3-4801-aa01-a482c5bfac0a",
                   "isHook": false,
                   "skipped": false
                 }
               ],
               "suites": [],
               "passes": [
-                "69fafbd7-17a8-4986-b051-98e7fabab770",
-                "84582f60-7914-48c0-824a-0bc581021530",
-                "fab37844-587e-4ffd-9779-4b423f23d5d2"
+                "bfae0666-e158-4b20-97fe-dcf3da840cc8",
+                "c929b7a8-ae79-48fc-87c6-5ecc2132d051",
+                "5558bd5f-e262-46c4-8a61-a4b64a49f9b0"
               ],
               "failures": [],
               "pending": [],
               "skipped": [],
-              "duration": 1032,
+              "duration": 957,
               "root": false,
               "rootEmpty": false,
               "_timeout": 2000
             },
             {
-              "uuid": "18e4f16b-307a-4f65-8bb4-d329140f3605",
+              "uuid": "7534df9c-8f9d-45a0-b5cd-ad5deef62a90",
               "title": "Problem 2",
               "fullFile": "",
               "file": "",
@@ -124,7 +124,7 @@
                   "title": "2-1 Board-container exists",
                   "fullTitle": "Hack#1 Public Test Problem 2 2-1 Board-container exists",
                   "timedOut": null,
-                  "duration": 121,
+                  "duration": 119,
                   "state": "passed",
                   "speed": "fast",
                   "pass": true,
@@ -133,8 +133,8 @@
                   "context": null,
                   "code": "cy.get('.Board-container').should('be.visible');",
                   "err": {},
-                  "uuid": "43bae040-3b3f-48fb-85ab-6312754b393e",
-                  "parentUUID": "18e4f16b-307a-4f65-8bb4-d329140f3605",
+                  "uuid": "29d16389-c861-48fe-a60e-2620c4c730b0",
+                  "parentUUID": "7534df9c-8f9d-45a0-b5cd-ad5deef62a90",
                   "isHook": false,
                   "skipped": false
                 },
@@ -142,7 +142,7 @@
                   "title": "2-2-1 There are six Row-containers",
                   "fullTitle": "Hack#1 Public Test Problem 2 2-2-1 There are six Row-containers",
                   "timedOut": null,
-                  "duration": 146,
+                  "duration": 107,
                   "state": "passed",
                   "speed": "fast",
                   "pass": true,
@@ -151,8 +151,8 @@
                   "context": null,
                   "code": "cy.get('.Board-container > .Row-container').should('have.length', 6);",
                   "err": {},
-                  "uuid": "872120e8-7431-4467-8567-2d94609ea44f",
-                  "parentUUID": "18e4f16b-307a-4f65-8bb4-d329140f3605",
+                  "uuid": "d19d0e29-fce2-4488-b2c7-4dc869e583cd",
+                  "parentUUID": "7534df9c-8f9d-45a0-b5cd-ad5deef62a90",
                   "isHook": false,
                   "skipped": false
                 },
@@ -160,7 +160,7 @@
                   "title": "2-2-2 CurRow is at the first row",
                   "fullTitle": "Hack#1 Public Test Problem 2 2-2-2 CurRow is at the first row",
                   "timedOut": null,
-                  "duration": 120,
+                  "duration": 97,
                   "state": "passed",
                   "speed": "fast",
                   "pass": true,
@@ -169,28 +169,28 @@
                   "context": null,
                   "code": "cy.get('.Board-container > .Row-container').children().eq(0).should('have.class', 'current');",
                   "err": {},
-                  "uuid": "339f92e1-637c-40e7-99dc-ecd26b3407c9",
-                  "parentUUID": "18e4f16b-307a-4f65-8bb4-d329140f3605",
+                  "uuid": "fca164d2-ccb4-482d-97f3-e13e5330dd8a",
+                  "parentUUID": "7534df9c-8f9d-45a0-b5cd-ad5deef62a90",
                   "isHook": false,
                   "skipped": false
                 }
               ],
               "suites": [],
               "passes": [
-                "43bae040-3b3f-48fb-85ab-6312754b393e",
-                "872120e8-7431-4467-8567-2d94609ea44f",
-                "339f92e1-637c-40e7-99dc-ecd26b3407c9"
+                "29d16389-c861-48fe-a60e-2620c4c730b0",
+                "d19d0e29-fce2-4488-b2c7-4dc869e583cd",
+                "fca164d2-ccb4-482d-97f3-e13e5330dd8a"
               ],
               "failures": [],
               "pending": [],
               "skipped": [],
-              "duration": 387,
+              "duration": 323,
               "root": false,
               "rootEmpty": false,
               "_timeout": 2000
             },
             {
-              "uuid": "f9ac15d8-433c-42ce-a9ca-8c2c11977138",
+              "uuid": "97de8ca7-7280-4a71-9255-034dc9ceea6b",
               "title": "Problem 3",
               "fullFile": "",
               "file": "",
@@ -201,21 +201,17 @@
                   "title": "3-1 curGuess is rendered onto CurRow",
                   "fullTitle": "Hack#1 Public Test Problem 3 3-1 curGuess is rendered onto CurRow",
                   "timedOut": null,
-                  "duration": 4246,
-                  "state": "failed",
-                  "speed": null,
-                  "pass": false,
-                  "fail": true,
+                  "duration": 437,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
                   "pending": false,
                   "context": null,
                   "code": "cy.get('body').type('{a}');\ncy.get('.Row-wrapper.current').children().eq(0).should('have.text', 'a').and('have.id', '0-0');\ncy.get('body').type('{b}').type('{c}').type('{e}');\ncy.get('.Row-wrapper.current').children().eq(1).should('have.text', 'b').and('have.id', '0-1');\ncy.get('.Row-wrapper.current').children().eq(2).should('have.text', 'c').and('have.id', '0-2');\ncy.get('.Row-wrapper.current').children().eq(3).should('have.text', 'e').and('have.id', '0-3');",
-                  "err": {
-                    "message": "AssertionError: Timed out retrying after 4000ms: expected '<div.Row-wordbox>' to have id '0-0'",
-                    "estack": "AssertionError: Timed out retrying after 4000ms: expected '<div.Row-wordbox>' to have id '0-0'\n    at Context.eval (webpack:///./cypress/e2e/public.cy.js:69:38)",
-                    "diff": null
-                  },
-                  "uuid": "205dda38-407d-467a-94a5-f01632408c7b",
-                  "parentUUID": "f9ac15d8-433c-42ce-a9ca-8c2c11977138",
+                  "err": {},
+                  "uuid": "a2eb40d4-02cf-4f2b-841f-f1a21ab521bf",
+                  "parentUUID": "97de8ca7-7280-4a71-9255-034dc9ceea6b",
                   "isHook": false,
                   "skipped": false
                 },
@@ -223,21 +219,17 @@
                   "title": "3-2 Type more than 5 letters",
                   "fullTitle": "Hack#1 Public Test Problem 3 3-2 Type more than 5 letters",
                   "timedOut": null,
-                  "duration": 4589,
-                  "state": "failed",
-                  "speed": null,
-                  "pass": false,
-                  "fail": true,
+                  "duration": 556,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
                   "pending": false,
                   "context": null,
                   "code": "const test = ['a', 'b', 'c', 'd', 'e', 'f'];\nfor (let i = 0; i < test.length; i += 1) {\n  cy.get('body').type(`{${test[i]}}`);\n}\ncy.get('.Row-wrapper.current').children().each(($el, index) => {\n  cy.wrap($el).should('have.text', test[index]).and('have.id', '0-' + index);\n});",
-                  "err": {
-                    "message": "AssertionError: Timed out retrying after 4000ms: expected '<div.Row-wordbox>' to have id '0-0'",
-                    "estack": "AssertionError: Timed out retrying after 4000ms: expected '<div.Row-wordbox>' to have id '0-0'\n    at Context.eval (webpack:///./cypress/e2e/public.cy.js:83:62)",
-                    "diff": null
-                  },
-                  "uuid": "ff21a6cb-5144-4f14-b717-3033f7ee8960",
-                  "parentUUID": "f9ac15d8-433c-42ce-a9ca-8c2c11977138",
+                  "err": {},
+                  "uuid": "3190fda9-6773-49fa-93f9-e7959055f003",
+                  "parentUUID": "97de8ca7-7280-4a71-9255-034dc9ceea6b",
                   "isHook": false,
                   "skipped": false
                 },
@@ -245,21 +237,17 @@
                   "title": "3-3 Backspace is working",
                   "fullTitle": "Hack#1 Public Test Problem 3 3-3 Backspace is working",
                   "timedOut": null,
-                  "duration": 4649,
-                  "state": "failed",
-                  "speed": null,
-                  "pass": false,
-                  "fail": true,
+                  "duration": 601,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
                   "pending": false,
                   "context": null,
                   "code": "const test = ['z', 'x', 'c', 'v', 'backspace', 'b', 'n'];\nconst ans = ['z', 'x', 'c', 'b', 'n'];\nfor (let i = 0; i < test.length; i += 1) {\n  cy.get('body').type(`{${test[i]}}`);\n}\ncy.get('.Row-wrapper.current').children().each(($el, index) => {\n  cy.wrap($el).should('have.text', ans[index]);\n});",
-                  "err": {
-                    "message": "AssertionError: Timed out retrying after 4000ms: expected '<div.Row-wordbox>' to have text undefined, but the text was 'z'",
-                    "estack": "AssertionError: Timed out retrying after 4000ms: expected '<div.Row-wordbox>' to have text undefined, but the text was 'z'\n    at Context.eval (webpack:///./cypress/e2e/public.cy.js:95:29)",
-                    "diff": null
-                  },
-                  "uuid": "51f352e0-74fa-4183-b2e2-f0cb941d9143",
-                  "parentUUID": "f9ac15d8-433c-42ce-a9ca-8c2c11977138",
+                  "err": {},
+                  "uuid": "e014d23b-5f20-4395-882e-d1c8cc845ef2",
+                  "parentUUID": "97de8ca7-7280-4a71-9255-034dc9ceea6b",
                   "isHook": false,
                   "skipped": false
                 },
@@ -267,7 +255,7 @@
                   "title": "3-4 Filled wordboxes should have class filled",
                   "fullTitle": "Hack#1 Public Test Problem 3 3-4 Filled wordboxes should have class filled",
                   "timedOut": null,
-                  "duration": 4437,
+                  "duration": 4285,
                   "state": "failed",
                   "speed": null,
                   "pass": false,
@@ -276,33 +264,34 @@
                   "context": null,
                   "code": "cy.get('.Row-wrapper.current').children().each(($el, index) => {\n  cy.wrap($el).not('have.class', 'filled');\n});\ncy.get('body').type('{z}').type('{x}');\ncy.get('.Row-wrapper.current').children().each(($el, index) => {\n  if (index < 2) {\n    if (index == 0) cy.wrap($el).should('have.text', 'z').and('have.class', 'filled');else if (index == 1) cy.wrap($el).should('have.text', 'x').and('have.class', 'filled');\n  } else {\n    cy.wrap($el).not('have.class', 'filled');\n    cy.wrap($el).should('have.text', '');\n  }\n});",
                   "err": {
-                    "message": "AssertionError: Timed out retrying after 4000ms: expected '<div.Row-wordbox>' to have class 'filled'",
-                    "estack": "AssertionError: Timed out retrying after 4000ms: expected '<div.Row-wordbox>' to have class 'filled'\n    at Context.eval (webpack:///./cypress/e2e/public.cy.js:111:73)",
+                    "message": "AssertionError: Timed out retrying after 4000ms: expected '<div#0-0.Row-wordbox>' to have class 'filled'",
+                    "estack": "AssertionError: Timed out retrying after 4000ms: expected '<div#0-0.Row-wordbox>' to have class 'filled'\n    at Context.eval (webpack:///./cypress/e2e/public.cy.js:111:73)",
                     "diff": null
                   },
-                  "uuid": "9e389d2f-e5e0-47e2-bbef-654b3e558386",
-                  "parentUUID": "f9ac15d8-433c-42ce-a9ca-8c2c11977138",
+                  "uuid": "e5637ea8-f6a2-4dfb-b3c5-c53c76ab0cfa",
+                  "parentUUID": "97de8ca7-7280-4a71-9255-034dc9ceea6b",
                   "isHook": false,
                   "skipped": false
                 }
               ],
               "suites": [],
-              "passes": [],
+              "passes": [
+                "a2eb40d4-02cf-4f2b-841f-f1a21ab521bf",
+                "3190fda9-6773-49fa-93f9-e7959055f003",
+                "e014d23b-5f20-4395-882e-d1c8cc845ef2"
+              ],
               "failures": [
-                "205dda38-407d-467a-94a5-f01632408c7b",
-                "ff21a6cb-5144-4f14-b717-3033f7ee8960",
-                "51f352e0-74fa-4183-b2e2-f0cb941d9143",
-                "9e389d2f-e5e0-47e2-bbef-654b3e558386"
+                "e5637ea8-f6a2-4dfb-b3c5-c53c76ab0cfa"
               ],
               "pending": [],
               "skipped": [],
-              "duration": 17921,
+              "duration": 5879,
               "root": false,
               "rootEmpty": false,
               "_timeout": 2000
             },
             {
-              "uuid": "acd55601-d13a-4c16-aa91-f578e4c0eca7",
+              "uuid": "b46e340c-3f9f-487e-af24-50fa05f6c501",
               "title": "Problem 4",
               "fullFile": "",
               "file": "",
@@ -313,7 +302,7 @@
                   "title": "4-1 CurRow change after pressing enter",
                   "fullTitle": "Hack#1 Public Test Problem 4 4-1 CurRow change after pressing enter",
                   "timedOut": null,
-                  "duration": 569,
+                  "duration": 547,
                   "state": "passed",
                   "speed": "fast",
                   "pass": true,
@@ -322,8 +311,8 @@
                   "context": null,
                   "code": "const test = ['a', 'b', 'c', 'd', 'e', 'enter'];\nfor (let i = 0; i < test.length; i += 1) {\n  cy.get('body').type(`{${test[i]}}`);\n}\ncy.get('.Board-container').children().eq(0).get('.Row-wrapper').not('have.class', 'current');\ncy.get('.Board-container').children().eq(1).get('.Row-wrapper').should('have.class', 'current');",
                   "err": {},
-                  "uuid": "b1937d95-bd7d-4f09-b129-1086856278ea",
-                  "parentUUID": "acd55601-d13a-4c16-aa91-f578e4c0eca7",
+                  "uuid": "bbca604e-e566-4aa7-91f2-7db6fa6dda6e",
+                  "parentUUID": "b46e340c-3f9f-487e-af24-50fa05f6c501",
                   "isHook": false,
                   "skipped": false
                 },
@@ -331,7 +320,7 @@
                   "title": "4-2 Green rendered correctly (only one line)",
                   "fullTitle": "Hack#1 Public Test Problem 4 4-2 Green rendered correctly (only one line)",
                   "timedOut": null,
-                  "duration": 4519,
+                  "duration": 4498,
                   "state": "failed",
                   "speed": null,
                   "pass": false,
@@ -344,8 +333,8 @@
                     "estack": "AssertionError: Timed out retrying after 4000ms: expected '<div.Row-wordbox>' to have class 'green'\n    at Context.eval (webpack:///./cypress/e2e/public.cy.js:147:29)",
                     "diff": null
                   },
-                  "uuid": "3f06a438-d241-4925-9efb-530da909661f",
-                  "parentUUID": "acd55601-d13a-4c16-aa91-f578e4c0eca7",
+                  "uuid": "29bbc43d-da88-4c30-953e-1615702b8087",
+                  "parentUUID": "b46e340c-3f9f-487e-af24-50fa05f6c501",
                   "isHook": false,
                   "skipped": false
                 },
@@ -353,7 +342,7 @@
                   "title": "4-3 Green and yellow rendered correctly (only one line)",
                   "fullTitle": "Hack#1 Public Test Problem 4 4-3 Green and yellow rendered correctly (only one line)",
                   "timedOut": null,
-                  "duration": 4527,
+                  "duration": 4524,
                   "state": "failed",
                   "speed": null,
                   "pass": false,
@@ -366,8 +355,8 @@
                     "estack": "AssertionError: Timed out retrying after 4000ms: expected '<div.Row-wordbox>' to have class 'grey'\n    at Context.eval (webpack:///./cypress/e2e/public.cy.js:159:29)",
                     "diff": null
                   },
-                  "uuid": "1647c9be-3575-416f-8055-89efb5c0e3f9",
-                  "parentUUID": "acd55601-d13a-4c16-aa91-f578e4c0eca7",
+                  "uuid": "cbfa9281-666d-4c43-9c7a-ad05b28455d8",
+                  "parentUUID": "b46e340c-3f9f-487e-af24-50fa05f6c501",
                   "isHook": false,
                   "skipped": false
                 },
@@ -375,7 +364,7 @@
                   "title": "4-4 Multiple Lines Test",
                   "fullTitle": "Hack#1 Public Test Problem 4 4-4 Multiple Lines Test",
                   "timedOut": null,
-                  "duration": 6141,
+                  "duration": 6171,
                   "state": "failed",
                   "speed": null,
                   "pass": false,
@@ -388,30 +377,30 @@
                     "estack": "AssertionError: Timed out retrying after 4000ms: expected '<div.Row-wordbox>' to have text 'z', but the text was ''\n    at Context.eval (webpack:///./cypress/e2e/public.cy.js:191:25)",
                     "diff": "+ 'z'\n"
                   },
-                  "uuid": "a81bf234-ba60-49e9-a3b7-28677cccf5a8",
-                  "parentUUID": "acd55601-d13a-4c16-aa91-f578e4c0eca7",
+                  "uuid": "170e50b5-258b-4dcf-8a26-30461d439a10",
+                  "parentUUID": "b46e340c-3f9f-487e-af24-50fa05f6c501",
                   "isHook": false,
                   "skipped": false
                 }
               ],
               "suites": [],
               "passes": [
-                "b1937d95-bd7d-4f09-b129-1086856278ea"
+                "bbca604e-e566-4aa7-91f2-7db6fa6dda6e"
               ],
               "failures": [
-                "3f06a438-d241-4925-9efb-530da909661f",
-                "1647c9be-3575-416f-8055-89efb5c0e3f9",
-                "a81bf234-ba60-49e9-a3b7-28677cccf5a8"
+                "29bbc43d-da88-4c30-953e-1615702b8087",
+                "cbfa9281-666d-4c43-9c7a-ad05b28455d8",
+                "170e50b5-258b-4dcf-8a26-30461d439a10"
               ],
               "pending": [],
               "skipped": [],
-              "duration": 15756,
+              "duration": 15740,
               "root": false,
               "rootEmpty": false,
               "_timeout": 2000
             },
             {
-              "uuid": "9b4aee08-fbe2-4739-a5a8-491cad1b0477",
+              "uuid": "fc1cd513-cf23-480b-a0c8-f84c4582cd81",
               "title": "Problem 5",
               "fullFile": "",
               "file": "",
@@ -422,7 +411,7 @@
                   "title": "5-1 Render green correctly",
                   "fullTitle": "Hack#1 Public Test Problem 5 5-1 Render green correctly",
                   "timedOut": null,
-                  "duration": 4517,
+                  "duration": 4516,
                   "state": "failed",
                   "speed": null,
                   "pass": false,
@@ -435,8 +424,8 @@
                     "estack": "AssertionError: Timed out retrying after 4000ms: expected '<div#char_n.Keyboard-char.undefined>' to have class 'green'\n    at Context.eval (webpack:///./cypress/e2e/public.cy.js:207:68)",
                     "diff": null
                   },
-                  "uuid": "9c25c385-b005-4ff0-a8cf-3ec4bf627c71",
-                  "parentUUID": "9b4aee08-fbe2-4739-a5a8-491cad1b0477",
+                  "uuid": "efad9ef3-f1c4-42a2-8499-fcf25f1eb79d",
+                  "parentUUID": "fc1cd513-cf23-480b-a0c8-f84c4582cd81",
                   "isHook": false,
                   "skipped": false
                 },
@@ -444,7 +433,7 @@
                   "title": "5-2 Multiple Lines",
                   "fullTitle": "Hack#1 Public Test Problem 5 5-2 Multiple Lines",
                   "timedOut": null,
-                  "duration": 5330,
+                  "duration": 5381,
                   "state": "failed",
                   "speed": null,
                   "pass": false,
@@ -457,8 +446,8 @@
                     "estack": "AssertionError: Timed out retrying after 4000ms: expected '<div#char_n.Keyboard-char.undefined>' to have class 'yellow'\n    at Context.eval (webpack:///./cypress/e2e/public.cy.js:293:29)",
                     "diff": null
                   },
-                  "uuid": "05797608-480b-4038-bf46-31b46c2939fd",
-                  "parentUUID": "9b4aee08-fbe2-4739-a5a8-491cad1b0477",
+                  "uuid": "1e083bdd-89fe-4134-919f-ce54abb2e63e",
+                  "parentUUID": "fc1cd513-cf23-480b-a0c8-f84c4582cd81",
                   "isHook": false,
                   "skipped": false
                 }
@@ -466,18 +455,18 @@
               "suites": [],
               "passes": [],
               "failures": [
-                "9c25c385-b005-4ff0-a8cf-3ec4bf627c71",
-                "05797608-480b-4038-bf46-31b46c2939fd"
+                "efad9ef3-f1c4-42a2-8499-fcf25f1eb79d",
+                "1e083bdd-89fe-4134-919f-ce54abb2e63e"
               ],
               "pending": [],
               "skipped": [],
-              "duration": 9847,
+              "duration": 9897,
               "root": false,
               "rootEmpty": false,
               "_timeout": 2000
             },
             {
-              "uuid": "9ce7916a-336a-4667-86d7-78ad349d87c1",
+              "uuid": "0a68ca96-f39c-4813-b630-af225d61974f",
               "title": "Problem 6",
               "fullFile": "",
               "file": "",
@@ -488,7 +477,7 @@
                   "title": "6-1 Show winning info",
                   "fullTitle": "Hack#1 Public Test Problem 6 6-1 Show winning info",
                   "timedOut": null,
-                  "duration": 4529,
+                  "duration": 4519,
                   "state": "failed",
                   "speed": null,
                   "pass": false,
@@ -501,8 +490,8 @@
                     "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `.Wordle-lose`, but never found it.\n    at Context.eval (webpack:///./cypress/e2e/public.cy.js:321:43)",
                     "diff": null
                   },
-                  "uuid": "7371edcb-a5ba-4d6a-8f2b-d089107103a6",
-                  "parentUUID": "9ce7916a-336a-4667-86d7-78ad349d87c1",
+                  "uuid": "ff0721ab-2080-4521-b904-791b9e10c12a",
+                  "parentUUID": "0a68ca96-f39c-4813-b630-af225d61974f",
                   "isHook": false,
                   "skipped": false
                 },
@@ -510,7 +499,7 @@
                   "title": "6-2 Show losing info",
                   "fullTitle": "Hack#1 Public Test Problem 6 6-2 Show losing info",
                   "timedOut": null,
-                  "duration": 4670,
+                  "duration": 4703,
                   "state": "failed",
                   "speed": null,
                   "pass": false,
@@ -523,8 +512,8 @@
                     "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `.Wordle-lose`, but never found it.\n    at Context.eval (webpack:///./cypress/e2e/public.cy.js:340:43)",
                     "diff": null
                   },
-                  "uuid": "e0916dbf-aaf1-4ee9-a862-4d5730ebca35",
-                  "parentUUID": "9ce7916a-336a-4667-86d7-78ad349d87c1",
+                  "uuid": "8a1e0822-2bbe-4aa6-a530-1126a264c472",
+                  "parentUUID": "0a68ca96-f39c-4813-b630-af225d61974f",
                   "isHook": false,
                   "skipped": false
                 }
@@ -532,12 +521,12 @@
               "suites": [],
               "passes": [],
               "failures": [
-                "7371edcb-a5ba-4d6a-8f2b-d089107103a6",
-                "e0916dbf-aaf1-4ee9-a862-4d5730ebca35"
+                "ff0721ab-2080-4521-b904-791b9e10c12a",
+                "8a1e0822-2bbe-4aa6-a530-1126a264c472"
               ],
               "pending": [],
               "skipped": [],
-              "duration": 9199,
+              "duration": 9222,
               "root": false,
               "rootEmpty": false,
               "_timeout": 2000
