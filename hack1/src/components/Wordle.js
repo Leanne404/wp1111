@@ -46,7 +46,7 @@ const Wordle = ({ solution }) => {
         <div className='Wordle-container'>
             {/* TODO 6: Implementation for the result of the game */}
             
-            
+            <Board turn = {turn} guesses = {guesses} curGuess = {curGuess}/>
             {/* TODO 2-1:  call `Board` and pass `turn`, `guesses`, `curGuess` into it  */}
             
             <Keyboard usedChars = {usedChars}/>
