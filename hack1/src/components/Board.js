@@ -16,9 +16,12 @@ const Board = ({ turn, guesses, curGuess }) => {
     return (
         <div className="Board-container">
             {
-                guesses.map((row, index) => (
-                    <CurRow curGuess = {curGuess} rowIdx = {index} id = {"row_"+index.toString()} key = {"row_"+index.toString()}/>
-                ))
+                guesses.map((row, index) => {
+                    if(turn === index){
+                        return <CurRow curGuess = {curGuess} rowIdx = {index} id = {"row_"+index.toString()} key = {"row_"+index.toString()}/>
+                    }
+                    return <Row guess = {guesses} rowIdx = {index} id = {"row_"+index.toString()} key = {"row_"+index.toString()}/>
+                })
                 
             }
             {/* TODO 2-2: show 6 rows (map function is recommended) and defined row's key.

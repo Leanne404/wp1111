@@ -19,11 +19,11 @@ const CurRow = ({ curGuess, rowIdx }) => {
             
             {/* ↓ Default row, you should modify it. ↓ */}
             <div className='Row-wrapper current'>
-                <div className='Row-wordbox'>{letters[0]}</div>
-                <div className='Row-wordbox'>{letters[1]}</div>
-                <div className='Row-wordbox'>{letters[2]}</div>
-                <div className='Row-wordbox'>{letters[3]}</div>
-                <div className='Row-wordbox'>{letters[4]}</div>
+                <div id = {rowIdx+"-0"} key = {rowIdx+"-0"} className='Row-wordbox'>{letters[0]}</div>
+                <div id = {rowIdx+"-1"} key = {rowIdx+"-1"} className='Row-wordbox'>{letters[1]}</div>
+                <div id = {rowIdx+"-2"} key = {rowIdx+"-2"} className='Row-wordbox'>{letters[2]}</div>
+                <div id = {rowIdx+"-3"} key = {rowIdx+"-3"} className='Row-wordbox'>{letters[3]}</div>
+                <div id = {rowIdx+"-4"} key = {rowIdx+"-4"} className='Row-wordbox'>{letters[4]}</div>
             </div>
             {/* ↑ Default row, you should modify it. ↑ */}
         </div>
