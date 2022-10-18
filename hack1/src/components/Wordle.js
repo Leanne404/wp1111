@@ -49,7 +49,7 @@ const Wordle = ({ solution }) => {
             
             {/* TODO 2-1:  call `Board` and pass `turn`, `guesses`, `curGuess` into it  */}
             
-            
+            <Keyboard usedChars = {usedChars}/>
             {/* TODO 1-1: call `Keyboard` and pass `usedChars` into it. */}
             
             
