@@ -1,6 +1,10 @@
-const genNumber = () => {
-    let randomNum = Math.floor(Math.random()*100)+1;
-    console.log(randomNum)
-    return randomNum;
+var number = 0;
+
+const getNumber = () =>{
+    return number
 }
-export {genNumber}
+
+const genNumber = () => {
+    number = Math.floor(Math.random()*100)+1;
+}
+export {genNumber, getNumber}

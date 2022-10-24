@@ -1,24 +1,37 @@
 import express from 'express'
-import {genNumber} from '../core/getNumber'
+import {genNumber, getNumber} from '../core/getNumber'
 
 const router = express.Router()
 
 router.post('/start', (_, res) => {
-    genNumber() // 用亂數產生一個猜數字的 number，存在 memory DB 
+    genNumber() // 用亂數產生一個猜數字的 number，存在 memory DB
     res.json({ msg: 'The game has started.' })
 })
 
 router.get('/guess', (req, res) => {
-// 去 (memory) DB 拿答案的數字
-// 用 req.query.number 拿到前端輸入的數字
-    let guessNum = req.query.number
-// check if NOT a num or not in range [1,100]
+    let num = getNumber()
+    console.log("number",num)
+    // 去 (memory) DB 拿答案的數字
+    // 用 req.query.number 拿到前端輸入的數字
+    let guessNum = parseInt(req.query.number)
+    // check if NOT a num or not in range [1,100]
+    // 如果有問題 =>
+    // res.status(406).send({ msg: 'Not a legal number.' }) // 如果沒有問題，回傳 status
+    
     if(guessNum > 100 || guessNum < 1){
         res.status(406).send({ msg: 'Not a legal number.' })
     }
-// 如果有問題 =>
-// res.status(406).send({ msg: 'Not a legal number.' }) // 如果沒有問題，回傳 status
+    if(guessNum === num){
+        res.status(200).send({ msg: 'Equal' })
+    }
+    else if(guessNum > num ){
+        res.status(200).send({ msg: 'Smaller' })
+    }
+    else if(guessNum < num ){
+        res.status(200).send({ msg: 'Bigger' })
+    }
 })
+
 //router.post('/restart', (_, res) => { ... })
 export default router
 
