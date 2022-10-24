@@ -23,9 +23,9 @@ function App() {
   const startMenu =
     <div>
       <button onClick = {
-        () => {
-          setHasStarted(true);
-          startGame()
+        async() =>{
+          await startGame()
+          setHasStarted(true)
         }
           // someFunctionToBackend; and setHasStarted
         } > start game </button>
@@ -34,7 +34,6 @@ function App() {
 
   const handleChange = event => {
     setNumber(event.target.value);
-    console.log('value is:', event.target.value);
   }
 
   const gameMode =
