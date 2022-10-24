@@ -1,31 +1,72 @@
 import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import { startGame, guess, restart } from "./axios"
 
 function App() {
+  // Define states
+  // Define three different views
 
   const [hasStarted, setHasStarted] = useState(false) 
   const [hasWon, setHasWon] = useState(false)
   const [number, setNumber] = useState('')
   const [status, setStatus] = useState('')
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  const handleGuess = async() => {
+    const response = await guess(number)
+    if (response === 'Equal') setHasWon(true)
+    else {
+      setStatus(response)
+      setNumber('')
+  } }
+
+  const startMenu =
+    <div>
+      <button onClick = {
+        () => {
+          setHasStarted(true);
+          startGame()
+        }
+          // someFunctionToBackend; and setHasStarted
+        } > start game </button>
     </div>
-  );
+
+
+  const handleChange = event => {
+    setNumber(event.target.value);
+    console.log('value is:', event.target.value);
+  }
+
+  const gameMode =
+  <>
+    <p>Guess a number between 1 to 100</p>
+    <input onChange={handleChange}
+     // Get the value from input 
+    >
+    </input>
+    <button  // Send number to backend
+      onClick={handleGuess}
+      disabled={!number} >guess!</button> 
+    <p>{status}</p>
+  </>
+
+  const winningMode = 
+  <>
+    <p>you won! the number was {number}.</p>
+    <button  // Handle restart for backend and frontend
+    >restart</button>
+  </>
+
+
+  const game = 
+  <div>
+    {hasWon? winningMode: gameMode}
+  </div>
+
+
+  return <div className="App">
+     {hasStarted ? game : startMenu} 
+     </div>
 }
 
 export default App;
