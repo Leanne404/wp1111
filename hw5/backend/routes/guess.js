@@ -32,7 +32,10 @@ router.get('/guess', (req, res) => {
     }
 })
 
-//router.post('/restart', (_, res) => { ... })
+router.post('/restart', (_, res) => { 
+    genNumber() // 用亂數產生一個猜數字的 number，存在 memory DB
+    res.json({ msg: 'The game has restarted.' })
+})
 export default router
 
 

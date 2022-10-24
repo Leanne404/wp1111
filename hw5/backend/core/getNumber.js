@@ -1,4 +1,4 @@
-var number = 0;
+var number;
 
 const getNumber = () =>{
     return number

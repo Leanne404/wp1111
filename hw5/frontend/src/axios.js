@@ -17,8 +17,9 @@ const guess  = async (number) => {
     }
 }
 
-const restart = () => {
-    return
+const restart = async () => {
+  const { data: { msg } } = await instance.post('/restart')
+  return msg
 }
 
 export { startGame, guess, restart }

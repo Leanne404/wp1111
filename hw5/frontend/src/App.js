@@ -52,7 +52,12 @@ function App() {
   const winningMode = 
   <>
     <p>you won! the number was {number}.</p>
-    <button  // Handle restart for backend and frontend
+    <button onClick = {
+        async() =>{
+          await restart()
+          setHasWon(false)
+        }
+      }// Handle restart for backend and frontend
     >restart</button>
   </>
 
