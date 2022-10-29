@@ -14,7 +14,10 @@ function App() {
 
   const handleGuess = async() => {
     const response = await guess(number)
-    if (response === 'Equal') setHasWon(true)
+    if (response === 'Equal'){
+      setHasWon(true)
+      setStatus('')
+    }
     else {
       setStatus(response)
       setNumber('')
@@ -22,7 +25,8 @@ function App() {
 
   const startMenu =
     <div>
-      <button onClick = {
+      <button id = "btn_start"
+        onClick = {
         async() =>{
           await startGame()
           setHasStarted(true)
@@ -44,6 +48,7 @@ function App() {
     >
     </input>
     <button  // Send number to backend
+      id = "btn_guess"
       onClick={handleGuess}
       disabled={!number} >guess!</button> 
     <p>{status}</p>
@@ -52,7 +57,9 @@ function App() {
   const winningMode = 
   <>
     <p>you won! the number was {number}.</p>
-    <button onClick = {
+    <button 
+      id = "btn_restart"
+      onClick = {
         async() =>{
           await restart()
           setHasWon(false)

@@ -1,38 +1,53 @@
-.App {
-  text-align: center;
+* {
+  font-family: "Futura";
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+html,
+body {
+  height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+}
+
+#root{
+  height: 5%;
+}
+
+.App {
+  display: "flex";
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  text-align: center;
+  height: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+.App div {
+  height: 100%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#btn_start{
+  width: 20%;
+  height: 100%;
+  font-size: larger
 }
+
+.App div p{
+  font-size: large;
+}
+
+.App div input{
+  width: 20%;
+  height: 80%;
+}
+
+#btn_guess{
+  height: 100%;
+}
+
+#btn_restart{
+  width: 20%;
+  height: 100%;
+  font-size: larger
+}
+
