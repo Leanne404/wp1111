@@ -29,6 +29,9 @@ router.get('/guess', (req, res) => {
     else if(guessNum < num ){
         res.status(200).send({ msg: 'Bigger' })
     }
+    else{
+        res.status(406).send({ msg: 'Not a legal number.' })
+    }
 })
 
 router.post('/restart', (_, res) => { 
