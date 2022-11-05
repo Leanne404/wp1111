@@ -50,11 +50,11 @@ router.get("/cards", async(req,res)=>{
                 queryList.push(`Found card with name: ( ${name_existing[i].name}, ${name_existing[i].subject}, ${name_existing[i].score} )`)
             }
             console.log(queryList)
-            res.status(200).send({ message: queryList})
+            res.json({ messages: queryList, message: 'message'})
         }
         else{
             console.log("notFound")
-            res.status(200).send({ message: `${queryData.queryString} not found!`})
+            res.json({ message: `${queryData.queryString} not found!`})
         }
     }
     else{ //subject
@@ -66,11 +66,11 @@ router.get("/cards", async(req,res)=>{
                 queryList.push(`Found card with subject: ( ${subject_existing[i].name}, ${subject_existing[i].subject}, ${subject_existing[i].score} )`)
             }
             console.log(queryList)
-            res.status(200).send({ message: queryList})
+            res.json({ messages: queryList, message: 'message'})
         }
         else{
             console.log("notFound")
-            res.status(200).send({ message: `${queryData.queryString} not found!`})
+            res.json({ message: `${queryData.queryString} not found!`})
         }
     }
     
