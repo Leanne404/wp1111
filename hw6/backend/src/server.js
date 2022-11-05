@@ -18,6 +18,5 @@ app.use('/', routes);
 app.use(cors());
 app.use(express.json());
 
-
 db.connect();
  
