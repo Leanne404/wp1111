@@ -8,15 +8,19 @@ export default {
         const [task, payload] = JSON.parse(data)
         switch (task) {
             case 'input': {
-            const { name, body } = payload}
+            const { name, body } = payload
             // Save payload to DB
             const message = new Message({ name, body })
             try { await message.save();
-            } catch (e) { throw new Error
-            ("Message DB save error: " + e); }
+            } catch (e) { throw new Error("Message DB save error: " + e);}
             // Respond to client
+            sendData(['output', [payload]], ws)
+            sendStatus({
+            type: 'success',
+            msg: 'Message sent.'
+            }, ws)
             break;
+            }
         }
     }
-
 )}
