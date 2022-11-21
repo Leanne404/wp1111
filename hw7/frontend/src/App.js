@@ -1,13 +1,13 @@
 import './App.css'
 import { Button, Input, message, Tag } from 'antd'
-import { useState, useEffect } from 'react'
 import useChat from './useChat'
+import { useState, useEffect } from "react";
 
 function App() {
+
   const { status, messages, sendMessage } = useChat()
   const [username, setUsername] = useState('')
   const [body, setBody] = useState('')
-   
   const displayStatus = (s) => {
     if (s.msg) {
       const { type, msg } = s;
@@ -43,14 +43,14 @@ function App() {
             </p>
         )) )}
       </div>
+
       <Input
-        placeholder="Username"       
+        placeholder="Username"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
         style={{ marginBottom: 10 }}
- 
       ></Input>
-      <Input.Search        
+      <Input.Search
         value={body}
         onChange={(e) => setBody(e.target.value)}
         enterButton="Send"
@@ -58,7 +58,7 @@ function App() {
         onSearch={(msg) => {
           sendMessage({ name: username, body: msg })
           setBody('')
-        }}
+        }}        
       ></Input.Search>
     </div>
   )
