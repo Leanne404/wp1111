@@ -14,6 +14,10 @@ const client = new WebSocket('ws://localhost:4000')
     console.log(payload);
     }
 
+    const clearMessages = () => {
+        sendData(["clear"]);
+    };
+
     client.onmessage = (byteString) => {
         const { data } = byteString;
         const [task, payload] = JSON.parse(data);
@@ -29,13 +33,17 @@ const client = new WebSocket('ws://localhost:4000')
                 setMessages(payload);
                 break; 
             }
+            case "cleared": {
+                setMessages([]);
+                break;
+            }
             default: break;
         }
 
     }
 
 return {
-     status, messages, sendMessage
+     status, messages, sendMessage, clearMessages
   };
  };
  export default useChat;

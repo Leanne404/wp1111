@@ -29,6 +29,14 @@ export default {
                 }, ws)
                 break;
             }
+            
+            case 'clear': {
+                Message.deleteMany({}, () => {
+                    sendData(['cleared'], ws)
+                    sendStatus({ type: 'info', msg: 'Message cache cleared.'}, ws) })
+                break
+            }
+              
         }
     }
 )}

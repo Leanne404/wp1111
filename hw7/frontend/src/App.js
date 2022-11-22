@@ -34,7 +34,7 @@ function App() {
     <div className="App">
       <div className="App-title">
         <h1>Simple Chat</h1>
-        <Button type="primary" danger >
+        <Button type="primary" danger onClick={clearMessages}>
           Clear
         </Button>
       </div>
