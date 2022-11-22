@@ -8,6 +8,7 @@ function App() {
   const { status, messages, sendMessage } = useChat()
   const [username, setUsername] = useState('')
   const [body, setBody] = useState('')
+  
   const displayStatus = (s) => {
     if (s.msg) {
       const { type, msg } = s;
@@ -20,10 +21,13 @@ function App() {
         case 'error':
         default:
           message.error(content)
-  break
-  }}}
-  useEffect(() => {
-  displayStatus(status)}, [status])
+      break
+    }
+  }}
+    
+    useEffect(() => {
+      displayStatus(status)}
+      , [status])
 
   return (
     <div className="App">
