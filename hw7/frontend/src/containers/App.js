@@ -1,6 +1,6 @@
-import './App.css'
+import '../App.css'
 import { Button, Input, message, Tag } from 'antd'
-import useChat from './useChat'
+import useChat from './hooks/useChat'
 import { useState, useEffect, useRef } from "react";
 
 function App() {
