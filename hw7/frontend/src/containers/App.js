@@ -1,84 +1,31 @@
-import '../App.css'
-import { Button, Input, message, Tag } from 'antd'
+// import '../App.css'
 import useChat from './hooks/useChat'
-import { useState, useEffect, useRef } from "react";
+import { useEffect } from "react";
+import styled from 'styled-components';
+import ChatRoom from "./ChatRoom"
+import SignIn from "./SignIn"
 
-function App() {
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 500px;
+  margin: auto;
+`;
 
-  const { status, messages, sendMessage, clearMessages } = useChat()
-  const [username, setUsername] = useState('')
-  const [body, setBody] = useState('')
-  const bodyRef = useRef(null)
+const App = () =>{
+  const { status, signedIn, me ,/*displayStatus*/ } = useChat()
 
-  const displayStatus = (s) => {
-    if (s.msg) {
-      const { type, msg } = s;
-      const content = {
-        content: msg, duration: 0.5 }
-      switch (type) {
-        case 'success':
-          message.success(content)
-          break
-        case 'error':
-        default:
-          message.error(content)
-      break
-    }
-  }}
-    
-    useEffect(() => {
-      displayStatus(status)}
-      , [status])
-
-  return (
-    <div className="App">
-      <div className="App-title">
-        <h1>Simple Chat</h1>
-        <Button type="primary" danger onClick={clearMessages}>
-          Clear
-        </Button>
-      </div>
-      <div className="App-messages">
-        {messages.length === 0 ? (
-          <p style={{ color: '#ccc' }}> No messages... </p>
-        ):(
-          messages.map(({ name, body }, i) => (
-            <p className="App-message" key={i}>
-              <Tag color="blue">{name}</Tag> {body}
-            </p>
-        )) )}
-      </div>
-
-      <Input
-        onKeyDown={(e) => {
-          if (e.key === 'Enter') {
-            bodyRef.current.focus()
-        }}}
-        placeholder="Username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-        style={{ marginBottom: 10 }}
-      ></Input>
-      <Input.Search
-        ref={bodyRef}
-        value={body}
-        onChange={(e) => setBody(e.target.value)}
-        enterButton="Send"
-        placeholder="Type a message here..."
-        onSearch={(msg) => {           
-          if (!msg || !username) {
-            displayStatus({
-              type: 'error',
-              msg: 'Please enter a username and a message body.'
-            })
-            return
-          }
-          sendMessage({ name: username, body: msg })
-          setBody('')
-        }}        
-      ></Input.Search>
-    </div>
+  // useEffect(() => {
+  //   displayStatus(status)}, [status, displayStatus])
+  // console.log(signedIn)
+    return (
+      <Wrapper> {signedIn? <ChatRoom />: <ChatRoom/>} </Wrapper>
   )
 }
 
 export default App
+
+//SignIn me={me}

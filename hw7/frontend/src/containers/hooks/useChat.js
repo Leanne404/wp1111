@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 const client = new WebSocket('ws://localhost:4000')
+const LOCALSTORAGE_KEY = "save-me";
+const savedMe = localStorage.getItem(LOCALSTORAGE_KEY);
 
  const useChat = () => {
     const [messages, setMessages] = useState([]);
     const [status, setStatus] = useState({});
-    
+    const [signedIn, setSignedIn] = useState(false);
+    const [me, setMe] = useState(savedMe || "");
+
     const sendData = async (data) => {
         await client.send(JSON.stringify(data));
     }
@@ -14,9 +18,17 @@ const client = new WebSocket('ws://localhost:4000')
     console.log(payload);
     }
 
-    const clearMessages = () => {
-        sendData(["clear"]);
-    };
+    // const clearMessages = () => {
+    //     sendData(["clear"]);
+    // };
+
+    useEffect(() => {
+        if (signedIn) {
+          localStorage.setItem(LOCALSTORAGE_KEY, me);
+        }
+    }, [me, signedIn]);
+
+    
 
     client.onmessage = (byteString) => {
         const { data } = byteString;
@@ -43,7 +55,7 @@ const client = new WebSocket('ws://localhost:4000')
     }
 
 return {
-     status, messages, sendMessage, clearMessages
+     status, messages, sendMessage, /*clearMessages,*/  signedIn ,setSignedIn, me, setMe
   };
  };
  export default useChat;
