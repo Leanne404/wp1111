@@ -31,15 +31,14 @@ const ChatRoom = () => {
     const msgRef = useRef(null)
     const msgFooter = useRef(null)
     
-    const displayMessages = () =>{
-        console.log("display msg", messages)
+    const displayMessages = () => (
         messages.length === 0 ? (
             <p style={{ color: '#ccc' }}> No messages... </p>
             ):(
-            messages.map(({ name, body }, i) =>(
-                <Message name={name} isMe={name === me} message={body} key={i}></Message>
+            messages.map(({ name, body }, i) => (
+                <Message name={name} isMe={name === me} message={body} key={i} />
             )) )
-    }
+    )
     
     const scrollToBottom = () => {
         msgFooter.current?.scrollIntoView
@@ -56,14 +55,6 @@ const ChatRoom = () => {
     <>
         <Title name = {me}/>
         <ChatBoxWrapper>
-            {/* {messages.length === 0 ? (
-            <p style={{ color: '#ccc' }}> No messages... </p>
-            ):(
-            messages.map(({ name, body }, i) => (
-                <p className="App-message" key={i}>
-                <Tag color="blue">{name}</Tag> {body}
-                </p>
-            )) )} */}
             {displayMessages()}
             <FootRef ref={msgFooter} />
         </ChatBoxWrapper>

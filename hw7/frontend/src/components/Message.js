@@ -20,6 +20,8 @@ const StyledMessage = styled.div`
     }
 `;
 
+
+
 const Message = ({ isMe, name, message}) => {
     console.log("m",message)
     return (
