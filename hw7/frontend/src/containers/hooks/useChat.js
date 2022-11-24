@@ -1,13 +1,24 @@
-import { useState, useEffect } from "react";
+import React,{ useState, useEffect, useContext } from "react";
+import {  message } from 'antd'
 const client = new WebSocket('ws://localhost:4000')
 const LOCALSTORAGE_KEY = "save-me";
 const savedMe = localStorage.getItem(LOCALSTORAGE_KEY);
 
- const useChat = () => {
-    const [messages, setMessages] = useState([]);
+const ChatContext = React.createContext({
+    status: {},
+    me: "",
+    signedIn: false,
+    messages: [],
+    sendMessage: () => {},
+    clearMessages: () => {},
+});
+ 
+
+const ChatProvider = (props) => {
     const [status, setStatus] = useState({});
-    const [signedIn, setSignedIn] = useState(false);
     const [me, setMe] = useState(savedMe || "");
+    const [signedIn, setSignedIn] = useState(false);
+    const [messages, setMessages] = useState([]);
 
     const sendData = async (data) => {
         await client.send(JSON.stringify(data));
@@ -18,9 +29,25 @@ const savedMe = localStorage.getItem(LOCALSTORAGE_KEY);
     console.log(payload);
     }
 
-    // const clearMessages = () => {
-    //     sendData(["clear"]);
-    // };
+    const clearMessages = () => {
+        sendData(["clear"]);
+    };
+
+    const displayStatus = (s) => {
+        if (s.msg) {
+        const { type, msg } = s;
+        const content = {
+            content: msg, duration: 0.5 }
+        switch (type) {
+            case 'success':
+            message.success(content)
+            break
+            case 'error':
+            default:
+            message.error(content)
+        break
+        }
+    }}
 
     useEffect(() => {
         if (signedIn) {
@@ -53,9 +80,16 @@ const savedMe = localStorage.getItem(LOCALSTORAGE_KEY);
         }
 
     }
+    return (
+      <ChatContext.Provider
+        value={{
+          status, me, signedIn, messages, setMe, setSignedIn,
+          sendMessage, clearMessages, displayStatus
+}}
+        {...props}
+      />
+); };
+ 
 
-return {
-     status, messages, sendMessage, /*clearMessages,*/  signedIn ,setSignedIn, me, setMe
-  };
- };
- export default useChat;
+const useChat = () => useContext(ChatContext);
+export { ChatProvider, useChat };

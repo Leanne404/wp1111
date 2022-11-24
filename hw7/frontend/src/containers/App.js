@@ -1,5 +1,5 @@
 // import '../App.css'
-import useChat from './hooks/useChat'
+import { useChat } from './hooks/useChat'
 import { useEffect } from "react";
 import styled from 'styled-components';
 import ChatRoom from "./ChatRoom"
@@ -22,7 +22,7 @@ const App = () =>{
   //   displayStatus(status)}, [status, displayStatus])
   // console.log(signedIn)
     return (
-      <Wrapper> {signedIn? <ChatRoom />: <ChatRoom/>} </Wrapper>
+      <Wrapper> {signedIn? <ChatRoom />: <SignIn me={me} />} </Wrapper>
   )
 }
 

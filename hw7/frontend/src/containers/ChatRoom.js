@@ -1,5 +1,5 @@
 import { Input,Tag } from 'antd'
-import useChat from './hooks/useChat'
+import { useChat } from './hooks/useChat'
 import { useState, useEffect, useRef } from "react";
 import styled from 'styled-components';
 import Title from "../components/Title"
@@ -31,17 +31,15 @@ const ChatRoom = () => {
     const msgRef = useRef(null)
     const msgFooter = useRef(null)
     
-    // const displayMessages = () =>{
-    //     console.log("display msg", messages)
-    //     messages.length === 0 ? (
-    //         <p style={{ color: '#ccc' }}> No messages... </p>
-    //         ):(
-    //         messages.map(({ name, body }, i) => {
-    //             console.log(name, body, i, name === me)
-    //             return(
-    //             <Message name={name} isMe={name === me} message={body} key={i}></Message>
-    //         )}) )
-    // }
+    const displayMessages = () =>{
+        console.log("display msg", messages)
+        messages.length === 0 ? (
+            <p style={{ color: '#ccc' }}> No messages... </p>
+            ):(
+            messages.map(({ name, body }, i) =>(
+                <Message name={name} isMe={name === me} message={body} key={i}></Message>
+            )) )
+    }
     
     const scrollToBottom = () => {
         msgFooter.current?.scrollIntoView
@@ -58,15 +56,15 @@ const ChatRoom = () => {
     <>
         <Title name = {me}/>
         <ChatBoxWrapper>
-            {messages.length === 0 ? (
+            {/* {messages.length === 0 ? (
             <p style={{ color: '#ccc' }}> No messages... </p>
             ):(
             messages.map(({ name, body }, i) => (
                 <p className="App-message" key={i}>
                 <Tag color="blue">{name}</Tag> {body}
                 </p>
-            )) )}
-            {/* {displayMessages()} */}
+            )) )} */}
+            {displayMessages()}
             <FootRef ref={msgFooter} />
         </ChatBoxWrapper>
 
@@ -106,21 +104,21 @@ const ChatRoom = () => {
 export default ChatRoom;
 
 
-// // const displayStatus = (s) => {
-// //     if (s.msg) {
-// //     const { type, msg } = s;
-// //     const content = {
-// //         content: msg, duration: 0.5 }
-// //     switch (type) {
-// //         case 'success':
-// //         message.success(content)
-// //         break
-// //         case 'error':
-// //         default:
-// //         message.error(content)
-// //     break
-// //     }
-// // }}
+// const displayStatus = (s) => {
+//     if (s.msg) {
+//     const { type, msg } = s;
+//     const content = {
+//         content: msg, duration: 0.5 }
+//     switch (type) {
+//         case 'success':
+//         message.success(content)
+//         break
+//         case 'error':
+//         default:
+//         message.error(content)
+//     break
+//     }
+// }}
     
 // // useEffect(() => {
 // //   displayStatus(status)}

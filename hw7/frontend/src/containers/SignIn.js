@@ -1,5 +1,5 @@
 import LogIn from "../components/Login"
-import useChat from "./hooks/useChat";
+import { useChat } from "./hooks/useChat";
 import AppTitle from "../components/Title"
 
 const SignIn = () =>{
