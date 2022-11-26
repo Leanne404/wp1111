@@ -20,8 +20,8 @@ const ChatBoxesWrapper = styled(Tabs)`
 const ChatBoxWrapper = styled.div`
     height: calc(240px - 36px);
     display: flex;
-    flex-dirextion: column;
     overflow: auto;
+    flex-direction: column;
 `
 
 const FootRef = styled.div`
@@ -41,28 +41,31 @@ const ChatRoom = () => {
     
     // const msgRef = useRef(null)
     const msgFooter = useRef(null)
-    const displayMessages = (c) => {
-        c.length === 0 ? (
-            c = <p style={{ color: '#ccc' }}> No messages... </p>
+    const displayChat = (chat) => (
+        chat.length === 0 ? (
+            <p style={{ color: '#ccc' }}> No messages... </p>
             ):(
-            c = c.map(({ name, body }, i) => (
-                <Message name={name} isMe={name === me} message={body} key={i} />
-            )) )
-        return c
-    }
+                <ChatBoxWrapper>{
+                    chat.map(({ name, body }, i) => (
+                        <Message name={name} isMe={name === me} message={body} key={i} />
+                    ))}
+                <FootRef ref={msgFooter} />
+                </ChatBoxWrapper>
+            )
+    )
 
-    const renderChat = (chat) => {
-        chat = displayMessages(chat)
-        //把要顯示的訊息包成一個 div 然後傳給 chat 再把 chat 傳給 chatBoeses
-        //chatBoxes[0].children = chat
-        console.log("me",me)
-        console.log("chat",chat)
-        return chat
-        // console.log("box",chatBoxes[0].label)
-    }; // 產生 chat 的 DOM nodes
+    // const renderChat = (chat) => {
+    //     chat = displayChat(chat)
+    //     //把要顯示的訊息包成一個 div 然後傳給 chat 再把 chat 傳給 chatBoeses
+    //     //chatBoxes[0].children = chat
+    //     console.log("me",me)
+    //     console.log("chat",chat)
+    //     return chat
+    //     // console.log("box",chatBoxes[0].label)
+    // }; // 產生 chat 的 DOM nodes
 
     const extractChat = (friend) => {
-        return renderChat
+        return displayChat
         (messages.filter(({name, body}) => ((name === friend) || (name === me))));
     }
 
@@ -126,10 +129,7 @@ const ChatRoom = () => {
                 setActiveKey(removeChatBox(targetKey, activeKey));
             } }}
             items={chatBoxes}
-        >
-            {/* {displayMessages()}
-            <FootRef ref={msgFooter} />*/}
-        </ChatBoxesWrapper>
+        />
         <ChatModal
             open={modalOpen}
             onCreate={({ name }) => {
