@@ -85,7 +85,7 @@ const ChatProvider = (props) => {
         value={{
           status, me, signedIn, messages, setMe, setSignedIn,
           sendMessage, clearMessages, displayStatus
-}}
+    }}
         {...props}
       />
 ); };

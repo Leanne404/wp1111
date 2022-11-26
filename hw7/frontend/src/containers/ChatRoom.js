@@ -192,8 +192,15 @@ const ChatRoom = () => {
             if (!msg) {
                 displayStatus({
                 type: 'error',
-                msg: 'Please enter a username and a message body.'
+                msg: 'Please enter message.'
                 })
+                return
+            }
+            else if(activeKey === ''){
+                displayStatus({
+                    type: 'error',
+                    msg: 'Please add a chatbox first.'
+                    })
                 return
             }
             console.log("b sent",msgSent)
