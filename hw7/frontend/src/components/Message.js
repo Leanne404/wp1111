@@ -21,12 +21,11 @@ const StyledMessage = styled.div`
 `;
 
 
-
-const Message = ({ isMe, name, message}) => {
-    console.log("m",message)
+const Message = ({ isMe, message}) => {
+    console.log("m",message, isMe)
     return (
         <StyledMessage isMe = {isMe}>
-            <p><Tag color="blue">{name}</Tag> {message}</p>
+            <p>{message}</p>
         </StyledMessage>
     );
 };
