@@ -6,7 +6,7 @@ const Schema = mongoose.Schema
     name: { type: String, required: [true, 'Name field is required.'] },
     chatBoxes: [{ type: mongoose.Types.ObjectId, ref: 'ChatBox' }],
   });
-  const UserModel = mongoose.model('User', UserSchema);
+  const UserModel = mongoose.model('User', UserSchema, "chatboxes");
 
   /******* Message Schema *******/
   const MessageSchema = new Schema({
@@ -14,7 +14,7 @@ const Schema = mongoose.Schema
     sender: { type: mongoose.Types.ObjectId, ref: 'User' },
     body: { type: String, required: [true, 'Body field is required.'] },
   });
-  const MessageModel = mongoose.model('Message', MessageSchema);
+  const MessageModel = mongoose.model('Message', MessageSchema, "chatboxes");
 
   /******* ChatBox Schema *******/
   const ChatBoxSchema = new Schema({
@@ -22,6 +22,6 @@ const Schema = mongoose.Schema
     users: [{ type: mongoose.Types.ObjectId, ref: 'User' }],
     messages: [{ type: mongoose.Types.ObjectId, ref: 'Message' }],
   });
-  const ChatBoxModel = mongoose.model('ChatBox', ChatBoxSchema);
+  const ChatBoxModel = mongoose.model('ChatBox', ChatBoxSchema, "chatboxes");
 
   export {UserModel, MessageModel, ChatBoxModel}

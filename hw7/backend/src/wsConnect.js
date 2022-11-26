@@ -1,4 +1,4 @@
-import Message from "../models/message"
+// import Message from "../models/message"
 import { MessageModel, UserModel, ChatBoxModel } from "../models/chatbox";
 
 const makeName = (name, to) => { return [name, to].sort().join('_'); };
