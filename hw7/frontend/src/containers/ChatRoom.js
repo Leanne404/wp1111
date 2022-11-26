@@ -55,7 +55,6 @@ const ChatRoom = () => {
         chat = displayMessages(chat)
         //把要顯示的訊息包成一個 div 然後傳給 chat 再把 chat 傳給 chatBoeses
         //chatBoxes[0].children = chat
-        console.log("you", activeKey);
         console.log("me",me)
         console.log("chat",chat)
         return chat
@@ -74,6 +73,7 @@ const ChatRoom = () => {
     
     useEffect(() => {
         scrollToBottom();
+        console.log("sent effect", msgSent)
         setMsgSent(false);
     }, [msgSent]);
     
@@ -128,7 +128,7 @@ const ChatRoom = () => {
             items={chatBoxes}
         >
             {/* {displayMessages()}
-            <FootRef ref={msgFooter} /> */}
+            <FootRef ref={msgFooter} />*/}
         </ChatBoxesWrapper>
         <ChatModal
             open={modalOpen}
@@ -196,9 +196,11 @@ const ChatRoom = () => {
                 })
                 return
             }
+            console.log("b sent",msgSent)
             sendMessage({ name: me, body: msg })
             setMsg('')
             setMsgSent(true)
+            console.log("a sent",msgSent)
             }}        
         ></Input.Search>
         </>
