@@ -1,6 +1,6 @@
 import React,{ useState, useEffect, useContext } from "react";
-import {  message } from 'antd'
-const client = new WebSocket('ws://localhost:4000')
+import { message } from 'antd'
+
 const LOCALSTORAGE_KEY = "save-me";
 const savedMe = localStorage.getItem(LOCALSTORAGE_KEY);
 
@@ -9,24 +9,79 @@ const ChatContext = React.createContext({
     me: "",
     signedIn: false,
     messages: [],
+    startChat: () => {},
     sendMessage: () => {},
-    clearMessages: () => {},
+    clearMessages: () => {}
 });
  
+const client = new WebSocket('ws://localhost:4000')
+client.onopen = () => {console.log('Backend socket server connected!')}
 
 const ChatProvider = (props) => {
+    console.log("porps of chatProvider",props)
     const [status, setStatus] = useState({});
     const [me, setMe] = useState(savedMe || "");
     const [signedIn, setSignedIn] = useState(false);
     const [messages, setMessages] = useState([]);
 
-    const sendData = async (data) => {
-        await client.send(JSON.stringify(data));
+    client.onmessage = (byteString) => {
+        const [type, payload] = JSON.parse(byteString.data);
+        console.log("type",type) 
+        switch (type) {
+            case "CHAT": {
+                console.log("payload",payload)
+                setMessages(payload); 
+                break; 
+            }
+            
+            case "MESSAGE": {
+                setMessages(() => [...message, payload])
+                break;
+            }
+            
+            // case "status":{
+            //     setStatus(payload); break;
+            // }
+            // case "init": {
+            //     setMessages(payload);
+            //     break; 
+            // }
+            // case "cleared": {
+            //     setMessages([]);
+            //     break;
+            // }
+            default: break;
+        }
+
     }
 
-    const sendMessage = (payload) => {
-    sendData(["input", payload]);
-    console.log(payload);
+    const startChat = (name, to) => {
+        console.log("name",name, "to",to)
+        if(!name ) throw new Error('Name required.');
+        if(!to) throw new Error("to required!")
+        sendData({
+            type: 'CHAT',
+            payload: { name, to }
+        })
+    }
+
+
+    const sendMessage = (data) => {
+        const name = data.name
+        const to = data.to
+        const body = data.body
+        console.log("name",name, "to",to, "body",body)
+        if(!name ) throw new Error('Name required.')
+        if(!to) throw new Error('to required.')
+        if(!body) throw new Error('body required.')
+        sendData({
+            type: 'MESSAGE',
+            payload: { name, to , body} 
+        })
+    }
+    
+    const sendData = async (data) => {
+        await client.send(JSON.stringify(data));
     }
 
     const clearMessages = () => {
@@ -56,35 +111,19 @@ const ChatProvider = (props) => {
     }, [me, signedIn]);
 
     
-
-    client.onmessage = (byteString) => {
-        const { data } = byteString;
-        const [task, payload] = JSON.parse(data);
-        switch (task) { 
-            case "output": {
-                setMessages(() => [...messages, ...payload]); 
-                break; 
-            }
-            case "status":{
-                setStatus(payload); break;
-            }
-            case "init": {
-                setMessages(payload);
-                break; 
-            }
-            case "cleared": {
-                setMessages([]);
-                break;
-            }
-            default: break;
-        }
-
-    }
     return (
       <ChatContext.Provider
         value={{
-          status, me, signedIn, messages, setMe, setSignedIn,
-          sendMessage, clearMessages, displayStatus
+          status, 
+          me, 
+          signedIn, 
+          messages, 
+          setMe, 
+          setSignedIn,
+          startChat,
+          sendMessage, 
+          clearMessages, 
+          displayStatus
     }}
         {...props}
       />

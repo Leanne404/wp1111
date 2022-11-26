@@ -31,7 +31,7 @@ const FootRef = styled.div`
 
 const ChatRoom = () => {
 
-    const { messages, sendMessage, me, displayStatus } = useChat()
+    const { messages, sendMessage, me, displayStatus, startChat } = useChat()
     // const [ username, setUsername ] = useState('')
     const [ chatBoxes , setChatBoxes ] = useState([]) // {label, children, key}
     const [ activeKey, setActiveKey ] = useState('')
@@ -91,6 +91,7 @@ const ChatRoom = () => {
           { label: friend, children: chat,
             key: friend }]);
         setMsgSent(true);
+        startChat(me, friend)
         return friend;
     };    
     
@@ -204,7 +205,8 @@ const ChatRoom = () => {
                 return
             }
             console.log("b sent",msgSent)
-            sendMessage({ name: me, body: msg })
+            console.log("me",me,"active",activeKey,"msg",msg)
+            sendMessage({ name: me, to : activeKey, body: msg })
             setMsg('')
             setMsgSent(true)
             console.log("a sent",msgSent)
