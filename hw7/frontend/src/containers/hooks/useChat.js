@@ -42,10 +42,10 @@ const ChatProvider = (props) => {
             // case "status":{
             //     setStatus(payload); break;
             // }
-            // case "init": {
-            //     setMessages(payload);
-            //     break; 
-            // }
+            case "init": {
+                setMessages(payload);
+                break; 
+            }
             // case "cleared": {
             //     setMessages([]);
             //     break;
