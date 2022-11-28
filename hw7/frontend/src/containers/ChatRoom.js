@@ -73,8 +73,8 @@ const ChatRoom = () => {
             console.log(sender,chatBox.users)
             const user1 = chatBox.users[0]
             const user2 = chatBox.users[1]
-            //console.log("s",sender,"r",receiver)
-            return(((user1 === friend) && (user2 === me)) || ((user1 === me) && (user2 === friend)))
+            //console.log("s",sender,"r",)
+            return(((user1 === friend) && (user2 === me)) || ((user1 === me) && (user2 === friend)) || ((friend === me) && (user1 === user2)))
         }));
     }
 
