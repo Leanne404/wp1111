@@ -13,9 +13,19 @@ const ChatContext = React.createContext({
     sendMessage: () => {},
     clearMessages: () => {}
 });
- 
+
 const client = new WebSocket('ws://localhost:4000')
-client.onopen = () => {console.log('Backend socket server connected!')}
+
+const sendData = async (data) => {
+    await client.send(JSON.stringify(data));
+}
+
+client.onopen = () => {
+    sendData({
+        type: 'INIT',
+        payload: {} 
+    })
+    console.log('Backend socket server connected!')}
 
 const ChatProvider = (props) => {
     console.log("porps of chatProvider",props)
@@ -35,6 +45,7 @@ const ChatProvider = (props) => {
             }
             
             case "MESSAGE": {
+                console.log("message in MESSAGE", messages)
                 setMessages(() => [...message, payload])
                 break;
             }
@@ -79,10 +90,7 @@ const ChatProvider = (props) => {
             payload: { name, to , body} 
         })
     }
-    
-    const sendData = async (data) => {
-        await client.send(JSON.stringify(data));
-    }
+
 
     const clearMessages = () => {
         sendData(["clear"]);

@@ -43,7 +43,7 @@ export default {
     onMessage: (ws,wss) => (
         async (byteString) => {
         const { data } = byteString
-        // console.log(data)
+        console.log("data",data)
         const dataParse = JSON.parse(data)
         const type = dataParse.type
         const payload = dataParse.payload
@@ -67,13 +67,30 @@ export default {
                 console.log("chat")
                 break;
             }
+
+            case "INIT":{
+                MessageModel.find().populate("chatBox")
+                .exec((err, res) => {
+                    if (err) throw err;
+                    // initialize app with existing messages
+                    console.log("res",res)
+                  sendData(["CHAT", res], ws);
+                });
+            }
+            
             case "MESSAGE":{
                 // Save payload to DB
                 createMsg(name, to, body, chatName)
                 // Respond to client
+                // sendData(['MESSAGE', [payload]], ws);
+                // sendStatus({
+                //     type: 'success',
+                //     msg: 'Message sent.'
+                // }, ws);
+
                 // broadcastMessage(
                 //     wss,
-                //     ['output', [payload]],
+                //     ['MESSAGE', [payload]],
                 //     {
                 //         type: 'success',
                 //         msg: 'Message sent.'
