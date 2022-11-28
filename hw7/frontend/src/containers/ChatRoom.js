@@ -48,8 +48,8 @@ const ChatRoom = () => {
             <p style={{ color: '#ccc' }}> No messages... </p>
             ):(
                 <ChatBoxWrapper>{
-                    chat.map(({ name, body }, i) => (
-                        <Message name={name} isMe={name === me} message={body} key={i} />
+                    chat.map(({ sender, body }, i) => (
+                        <Message name={sender} isMe={sender === me} message={body} key={i} />
                     ))}
                 <FootRef ref={msgFooter} />
                 </ChatBoxWrapper>
@@ -71,8 +71,10 @@ const ChatRoom = () => {
         return displayChat
         (messages.filter(({sender, body, chatBox}) => {
             console.log(sender,chatBox.users)
-            const receiver = chatBox.users[1]
-            return((receiver === friend) && (sender === me))
+            const user1 = chatBox.users[0]
+            const user2 = chatBox.users[1]
+            //console.log("s",sender,"r",receiver)
+            return(((user1 === friend) && (user2 === me)) || ((user1 === me) && (user2 === friend)))
         }));
     }
 
