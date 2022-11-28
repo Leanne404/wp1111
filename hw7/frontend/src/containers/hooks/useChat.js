@@ -28,25 +28,22 @@ client.onopen = () => {
     console.log('Backend socket server connected!')}
 
 const ChatProvider = (props) => {
-    console.log("porps of chatProvider",props)
     const [status, setStatus] = useState({});
     const [me, setMe] = useState(savedMe || "");
     const [signedIn, setSignedIn] = useState(false);
     const [messages, setMessages] = useState([]);
+    const [msgSent, setMsgSent]= useState(true);
 
     client.onmessage = (byteString) => {
         const [type, payload] = JSON.parse(byteString.data);
-        console.log("type",type) 
         switch (type) {
             case "CHAT": {
-                console.log("payload",payload, "type", typeof(payload))
                 setMessages(payload); 
                 break; 
             }
             
             case "MESSAGE": {
-                console.log("message in MESSAGE", messages)
-                setMessages(() => [...message, payload])
+                // setMessages((preMessage) => [...preMessage, payload]) // 有問題
                 break;
             }
             
@@ -89,6 +86,7 @@ const ChatProvider = (props) => {
             type: 'MESSAGE',
             payload: { name, to , body} 
         })
+        //setMsgSent(true)
     }
 
 
@@ -131,7 +129,9 @@ const ChatProvider = (props) => {
           startChat,
           sendMessage, 
           clearMessages, 
-          displayStatus
+          displayStatus,
+          setMsgSent,
+          msgSent,
     }}
         {...props}
       />

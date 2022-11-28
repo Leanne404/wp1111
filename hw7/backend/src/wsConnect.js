@@ -11,10 +11,8 @@ const validateChatBox = async (name, participants) => {
 
 const createMsg = async(name, to, body, chatName) => {
     let box = await ChatBoxModel.findOne({ name:chatName });
-    console.log("box",box)
     if (box){
         let msg = await new MessageModel({ chatBox :box._id.toString(), sender: name, body: body }).save();
-        console.log("msg",msg.chatBox.toString() )
         await ChatBoxModel.updateMany(
             { _id: msg.chatBox.toString()},
             {$push:{"messages":msg._id.toString()}})
@@ -32,26 +30,14 @@ const broadcastMessage = (wss, data, status) => {
 }
 
 export default {
-    // initData: (ws) => {
-    //     Message.find().sort({ created_at: -1 }).limit(100)
-        //   .exec((err, res) => {
-        //     if (err) throw err;
-        //     // initialize app with existing messages
-        //   sendData(["init", res], ws);
-        // }); },
-
     onMessage: (ws,wss) => (
         async (byteString) => {
         const { data } = byteString
-        console.log("data",data)
         const dataParse = JSON.parse(data)
         const type = dataParse.type
         const payload = dataParse.payload
         const { name, to , body } = payload
         const chatName =  makeName(name, to)
-        console.log("on")
-        console.log(type)
-        console.log(payload)
         switch (type) {
             case "CHAT": {
                 const participants = [name, to]
@@ -60,11 +46,9 @@ export default {
                 .exec((err, res) => {
                     if (err) throw err;
                     // initialize app with existing messages
-                    console.log("res",res)
                   sendData(["CHAT", res], ws);
                 });
 
-                console.log("chat")
                 break;
             }
 
@@ -73,16 +57,16 @@ export default {
                 .exec((err, res) => {
                     if (err) throw err;
                     // initialize app with existing messages
-                    console.log("res",res)
+                    console.log("res init",res)
                   sendData(["CHAT", res], ws);
                 });
             }
-            
+
             case "MESSAGE":{
                 // Save payload to DB
                 createMsg(name, to, body, chatName)
                 // Respond to client
-                // sendData(['MESSAGE', [payload]], ws);
+                sendData(['MESSAGE', [payload]], ws);
                 // sendStatus({
                 //     type: 'success',
                 //     msg: 'Message sent.'
@@ -96,25 +80,7 @@ export default {
                 //         msg: 'Message sent.'
                 //     }
                 // )
-                //console.log(user)
-                console.log("message")
                 break;
-
-                // const { name, body } = payload
-                // // Save payload to DB
-                // const message = new Message({ name, body })
-                // try { await message.save();
-                // } catch (e) { throw new Error("Message DB save error: " + e);}
-                // // Respond to client
-                // broadcastMessage(
-                //     wss,
-                //     ['output', [payload]],
-                //     {
-                //         type: 'success',
-                //         msg: 'Message sent.'
-                //     }
-                // )
-                // break;
             }
             
             // case 'clear': {

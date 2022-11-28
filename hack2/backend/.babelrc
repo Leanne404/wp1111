@@ -1,0 +1,6 @@
+// 增加一個 .babelrc 的設定檔，內容如下：
+{
+    "presets": [
+      "@babel/preset-env"
+    ]
+}
