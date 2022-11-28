@@ -41,7 +41,9 @@ const ChatRoom = () => {
     
     // const msgRef = useRef(null)
     const msgFooter = useRef(null)
-    const displayChat = (chat) => (
+    const displayChat = (chat) => {
+        console.log("chat", chat)
+        return(
         chat.length === 0 ? (
             <p style={{ color: '#ccc' }}> No messages... </p>
             ):(
@@ -52,7 +54,7 @@ const ChatRoom = () => {
                 <FootRef ref={msgFooter} />
                 </ChatBoxWrapper>
             )
-    )
+    )}
 
     // const renderChat = (chat) => {
     //     chat = displayChat(chat)
@@ -65,8 +67,13 @@ const ChatRoom = () => {
     // }; // 產生 chat 的 DOM nodes
 
     const extractChat = (friend) => {
+        console.log("messagees",messages,"friend",friend)
         return displayChat
-        (messages.filter(({name, body}) => ((name === friend) || (name === me))));
+        (messages.filter(({sender, body, chatBox}) => {
+            console.log(sender,chatBox.users)
+            const receiver = chatBox.users[1]
+            return((receiver === friend) && (sender === me))
+        }));
     }
 
     const scrollToBottom = () => {

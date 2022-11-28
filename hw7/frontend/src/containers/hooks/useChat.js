@@ -29,7 +29,7 @@ const ChatProvider = (props) => {
         console.log("type",type) 
         switch (type) {
             case "CHAT": {
-                console.log("payload",payload)
+                console.log("payload",payload, "type", typeof(payload))
                 setMessages(payload); 
                 break; 
             }
@@ -42,10 +42,10 @@ const ChatProvider = (props) => {
             // case "status":{
             //     setStatus(payload); break;
             // }
-            case "init": {
-                setMessages(payload);
-                break; 
-            }
+            // case "init": {
+            //     setMessages(payload);
+            //     break; 
+            // }
             // case "cleared": {
             //     setMessages([]);
             //     break;

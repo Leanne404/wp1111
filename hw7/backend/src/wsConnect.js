@@ -11,8 +11,14 @@ const validateChatBox = async (name, participants) => {
 
 const createMsg = async(name, to, body, chatName) => {
     let box = await ChatBoxModel.findOne({ name:chatName });
-    if (box)
-        box = await new MessageModel({ chatBox :box._id.toString(), sender: name, body: body }).save();
+    console.log("box",box)
+    if (box){
+        let msg = await new MessageModel({ chatBox :box._id.toString(), sender: name, body: body }).save();
+        console.log("msg",msg.chatBox.toString() )
+        await ChatBoxModel.updateMany(
+            { _id: msg.chatBox.toString()},
+            {$push:{"messages":msg._id.toString()}})
+    }
     return
 }
 
@@ -50,13 +56,14 @@ export default {
             case "CHAT": {
                 const participants = [name, to]
                 validateChatBox(chatName, participants)
-                MessageModel.find().populate("chatBox", {name: chatName})
+                MessageModel.find().populate("chatBox")
                 .exec((err, res) => {
                     if (err) throw err;
                     // initialize app with existing messages
+                    console.log("res",res)
                   sendData(["CHAT", res], ws);
                 });
-                // sendData(["CHAT", res], ws);
+
                 console.log("chat")
                 break;
             }
