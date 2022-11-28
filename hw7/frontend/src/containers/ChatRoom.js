@@ -89,7 +89,7 @@ const ChatRoom = () => {
     // }; // 產生 chat 的 DOM nodes
     
     const extractChat = (friend) => {
-        console.log("friend",friend, "len",messages.length)
+        console.log("friend",friend, "msg",messages)
 
         return displayChat
         (messages.filter(({chatBox}) => {
@@ -122,7 +122,7 @@ const ChatRoom = () => {
        //console.log("create chat", chat)
         setChatBoxes([...chatBoxes,
           { label: friend, children: chat,
-            key: friend, chatBox:[me, friend] }]);
+            key: friend }]);
         setMsgSent(true);
         startChat(me, friend)
         return friend;

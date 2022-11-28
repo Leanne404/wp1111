@@ -43,7 +43,7 @@ const ChatProvider = (props) => {
             }
             
             case "MESSAGE": {
-                // setMessages((preMessage) => [...preMessage, payload]) // 有問題
+                setMessages((preMessage) => [...preMessage, payload]) // 有問題
                 break;
             }
             
