@@ -27,9 +27,8 @@ exports.GetSearch = async (req, res) => {
     
     // TODO Part I-3-a: find the information to all restaurants
 
-    console.log("getSreach")
     Info.find().exec((err, data) => {
-        console.log('data',data)
+        // console.log('data',data)
         if(err){
             res.status(403).send({ message: 'error', contents: data}) 
         }
