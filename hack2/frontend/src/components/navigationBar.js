@@ -39,12 +39,13 @@ const NavBar = () => {
         // TODO Part I-1: navigation to search page
         // See README for hint
         // FIXME - Modify below
+        console.log("search")
         navigate('/search', {
             state: {
-                priceFilter: undefined,
-                mealFilter: undefined,
-                typeFilter: undefined,
-                sortBy: undefined
+                priceFilter: priceFilter,
+                mealFilter: mealFilter,
+                typeFilter: typeFilter,
+                sortBy: sortMethod
             }
         });
 
