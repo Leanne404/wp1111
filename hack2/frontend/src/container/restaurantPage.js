@@ -23,6 +23,15 @@ const RestaurantPage = () => {
     const [comments, setComments] = useState([])
     const [loading, setLoading] = useState(true)
     const getInfo = async () => {
+        const res = await instance.get("getSearch")
+        const content = res.data.contents
+        for(let i = 0; i < content.length; i++){
+            let contentID = content[i].id
+            if(`:${contentID.toString()}` === id){
+                setInfo(content[i])
+                break;
+            }
+        }
         // TODO Part III-2: get a restaurant's info
     }
     const getComments = async () => {
