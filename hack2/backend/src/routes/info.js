@@ -25,8 +25,18 @@ exports.GetSearch = async (req, res) => {
     // When fail,
     //   do `res.status(403).send({ message: 'error', contents: ... })` 
     
-
     // TODO Part I-3-a: find the information to all restaurants
+
+    console.log("getSreach")
+    Info.find().exec((err, data) => {
+        console.log('data',data)
+        if(err){
+            res.status(403).send({ message: 'error', contents: data}) 
+        }
+        else{
+            res.status(200).send({ message: 'success', contents: data})
+        }
+    })
     
     // TODO Part II-2-a: revise the route so that the result is filtered with priceFilter, mealFilter and typeFilter
     // TODO Part II-2-b: revise the route so that the result is sorted by sortBy

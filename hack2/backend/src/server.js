@@ -13,6 +13,7 @@ import cors from 'cors'
 import routes from './routes'
 import mongoose from 'mongoose'
 import { dataInit } from './upload'
+
 require('dotenv').config()
 const app = express()
 
@@ -35,8 +36,13 @@ const dboptions = {
 
 // TODO Part I-3: check .env exists
 
+if (!process.env.MONGO_URL) {
+    console.error("Missing MONGO_URL!!!");
+    process.exit(1);
+}
 mongoose.connect(
     // TODO Part I-3: connect the backend to mongoDB
+    process.env.MONGO_URL, dboptions
 ).then(async res => {
     if (process.env.MODE === 'Reset') {
         console.log('Reset Mode: reset the data')

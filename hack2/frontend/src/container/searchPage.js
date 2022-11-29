@@ -17,9 +17,13 @@ const instance = axios.create({
 
 const SearchPage = () => {
     const { state } = useLocation();
-    const [restaurants, setRestaurant] = useState([])
+    const [restaurants, setRestaurant] = useState([
+    ])
+
+
     const getRestaurant = async () => {
         // TODO Part I-3-b: get information of restaurants from DB
+        axios.get( "http://localhost:3000" ,{ params: { ID: state } })    
     }
 
     useEffect(() => {
@@ -37,14 +41,30 @@ const SearchPage = () => {
             priceText += "$"
         return (priceText)
     }
+    console.log(restaurants)
 
     return (
 
         <div className='searchPageContainer'>
             {
-                restaurants.map((item) => (
+                restaurants.map((item) =>(
                     // TODO Part I-2: search page front-end
-                    <></>
+                    <>
+                    <div className='resBlock' id = {item.id} key = {item.id}>
+                        <div className= 'resImgContainer'> 
+                            <img className='reslmg' src={item.img}/>
+                        </div>
+                        <div className='reslnfo'>
+                            <div className='title'>
+                                <p className='name'>{item.name}</p>
+                                <p className='price'>{getPrice(item.price)}</p>
+                                <p className='distance'>{item.distamce / 1000} km</p>
+                            </div>
+                            <p className='description'>{item.tag}</p>
+                        </div>
+                       
+                    </div>
+                    </>
                 ))
             }
         </div>
