@@ -13,9 +13,11 @@ import '../css/restaurantPage.css'
 const Information = ({ info, rating }) => {
 
     const getTag = (tags) => {
+        tags.map(tag => console.log("tag",tag))
         return (
             <>
-                {/* TODO Part III-2-a render tags */}
+            {tags.map(tag => (<div className='tag' key={tag}>{tag}</div>))}
+            {/* TODO Part III-2-a render tags */}
             </>
         )
     }
@@ -25,6 +27,7 @@ const Information = ({ info, rating }) => {
             priceText += "$"
         return (
             <>
+                <div className='tag'>{priceText}</div>
                 {/* TODO Part III-2-a render price tags; hint: convert price number to dollar signs first */}
             </>
         )
