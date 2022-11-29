@@ -13,7 +13,6 @@ import '../css/restaurantPage.css'
 const Information = ({ info, rating }) => {
 
     const getTag = (tags) => {
-        tags.map(tag => console.log("tag",tag))
         return (
             <>
             {tags.map(tag => (<div className='tag' key={tag}>{tag}</div>))}
@@ -48,7 +47,6 @@ const Information = ({ info, rating }) => {
             <div className='infoRow'>
                 <div className='rate'>
                     {rating === 0 ? <p>No Rating</p> : <Stars rating={rating} displayScore={true} />}
-
                 </div>
                 <div className='distance'>{info.distance / 1000} km</div>
             </div>
