@@ -122,7 +122,7 @@ const ChatRoom = () => {
        //console.log("create chat", chat)
         setChatBoxes([...chatBoxes,
           { label: friend, children: chat,
-            key: friend }]);
+            key: friend}]);
         setMsgSent(true);
         startChat(me, friend)
         return friend;
@@ -199,7 +199,7 @@ const ChatRoom = () => {
             }
             // console.log("b sent",msgSent)
             // console.log("me",me,"active",activeKey,"msg",msg)
-            sendMessage({ name: me, to : activeKey, body: msg })
+            sendMessage({ name: me, to : activeKey, body: msg,  chatBox: {users:[me, activeKey]} })
             setMsg('')
             setMsgSent(true)
             // console.log("a sent",msgSent)
