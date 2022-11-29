@@ -36,7 +36,7 @@ const ChatProvider = (props) => {
     const [msgSent, setMsgSent]= useState(true);
 
     client.onmessage = (byteString) => {
-        console.log(byteString)
+        // console.log(byteString)
         const [type, payload] = JSON.parse(byteString.data);
     
         switch (type) {
@@ -46,10 +46,7 @@ const ChatProvider = (props) => {
             }
             
             case "MESSAGE": {
-                console.log("payinmsg",payload[0])
-                // payload = {name: payload[0].name, to: payload[0].to, body: payload[0].body, chatBox:payload[0].chatBox}
-                // console.log("newpayinmsg",payload)
-                setMessages((preMessage) => [...preMessage, payload[0]]) // 有問題
+                setMessages((preMessage) => [...preMessage, payload[0]]) 
                 break;
             }
             
@@ -70,7 +67,7 @@ const ChatProvider = (props) => {
     }
 
     const startChat = (name, to) => {
-        console.log("name",name, "to",to)
+        // console.log("name",name, "to",to)
         if(!name ) throw new Error('Name required.');
         if(!to) throw new Error("to required!")
         sendData({
@@ -85,13 +82,14 @@ const ChatProvider = (props) => {
         const to = data.to
         const body = data.body
         const chatBox = data.chatBox
-        console.log("name",name, "to",to, "body",body)
+        const sender = data.name
+        // console.log("name",name, "to",to, "body",body)
         if(!name ) throw new Error('Name required.')
         if(!to) throw new Error('to required.')
         if(!body) throw new Error('body required.')
         sendData({
             type: 'MESSAGE',
-            payload: { name, to , body, chatBox} 
+            payload: { name, to , body, chatBox, sender} 
         })
         //setMsgSent(true)
     }

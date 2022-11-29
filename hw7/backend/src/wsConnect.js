@@ -38,6 +38,7 @@ export default {
         const payload = dataParse.payload
         const { name, to , body } = payload
         const chatName =  makeName(name, to)
+        console.log('ws connect:41', type, payload)
         switch (type) {
             case "CHAT": {
                 const participants = [name, to]

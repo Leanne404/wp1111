@@ -20,7 +20,7 @@ const App = () =>{
 
   useEffect(() => {
     displayStatus(status)}, [status, displayStatus])
-  console.log(signedIn)
+  // console.log(signedIn)
   
     return (
       <Wrapper> {signedIn? <ChatRoom />: <SignIn me={me} />} </Wrapper>
