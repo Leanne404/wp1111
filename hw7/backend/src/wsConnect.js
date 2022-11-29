@@ -1,4 +1,3 @@
-// import Message from "../models/message"
 import { MessageModel, UserModel, ChatBoxModel } from "../models/chatbox";
 
 const makeName = (name, to) => { return [name, to].sort().join('_'); };
@@ -38,7 +37,6 @@ export default {
         const payload = dataParse.payload
         const { name, to , body } = payload
         const chatName =  makeName(name, to)
-        console.log('ws connect:41', type, payload)
         switch (type) {
             case "CHAT": {
                 const participants = [name, to]
@@ -49,7 +47,6 @@ export default {
                     // initialize app with existing messages
                   sendData(["CHAT", res], ws);
                 });
-
                 break;
             }
 
@@ -58,7 +55,6 @@ export default {
                 .exec((err, res) => {
                     if (err) throw err;
                     // initialize app with existing messages
-                    console.log("res init",res)
                   sendData(["CHAT", res], ws);
                 });
             }
@@ -68,35 +64,12 @@ export default {
                 createMsg(name, to, body, chatName)
                 // Respond to client
                 sendData(['MESSAGE', [payload]], ws);
-                // sendStatus({
-                //     type: 'success',
-                //     msg: 'Message sent.'
-                // }, ws);
-
-                // broadcastMessage(
-                //     wss,
-                //     ['MESSAGE', [payload]],
-                //     {
-                //         type: 'success',
-                //         msg: 'Message sent.'
-                //     }
-                // )
+                sendStatus({
+                    type: 'success',
+                    msg: 'message sent.'
+                }, ws);
                 break;
             }
-            
-            // case 'clear': {
-            //     Message.deleteMany({}, () => {
-            //         broadcastMessage(
-            //             wss,
-            //             ['cleared'],
-            //             {
-            //                 type: 'info',
-            //                  msg: 'Message cache cleared.
-            //             }
-            //         )
-            //         break
-            //     })
-            // }
               
         }
     }

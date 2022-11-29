@@ -1,6 +1,6 @@
 import React,{ useState, useEffect, useContext } from "react";
 import { message } from 'antd'
-import Column from "antd/lib/table/Column";
+// import Column from "antd/lib/table/Column";
 
 const LOCALSTORAGE_KEY = "save-me";
 const savedMe = localStorage.getItem(LOCALSTORAGE_KEY);
@@ -36,7 +36,6 @@ const ChatProvider = (props) => {
     const [msgSent, setMsgSent]= useState(true);
 
     client.onmessage = (byteString) => {
-        // console.log(byteString)
         const [type, payload] = JSON.parse(byteString.data);
     
         switch (type) {
@@ -50,24 +49,16 @@ const ChatProvider = (props) => {
                 break;
             }
             
-            // case "status":{
-            //     setStatus(payload); break;
-            // }
-            // case "init": {
-            //     setMessages(payload);
-            //     break; 
-            // }
-            // case "cleared": {
-            //     setMessages([]);
-            //     break;
-            // }
+            case "status":{
+                setStatus(payload); 
+                break;
+            }
             default: break;
         }
 
     }
 
     const startChat = (name, to) => {
-        // console.log("name",name, "to",to)
         if(!name ) throw new Error('Name required.');
         if(!to) throw new Error("to required!")
         sendData({
@@ -83,7 +74,6 @@ const ChatProvider = (props) => {
         const body = data.body
         const chatBox = data.chatBox
         const sender = data.name
-        // console.log("name",name, "to",to, "body",body)
         if(!name ) throw new Error('Name required.')
         if(!to) throw new Error('to required.')
         if(!body) throw new Error('body required.')
@@ -91,7 +81,7 @@ const ChatProvider = (props) => {
             type: 'MESSAGE',
             payload: { name, to , body, chatBox, sender} 
         })
-        //setMsgSent(true)
+        setMsgSent(true)
     }
 
 

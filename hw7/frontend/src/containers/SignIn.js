@@ -13,6 +13,10 @@ const SignIn = () =>{
         else {
             setSignedIn(true);
             console.log("set sign in true",name, me)
+            displayStatus({
+                type: "success",
+                msg: "Sign in success.",
+            });
         }
     }
     return ( 
