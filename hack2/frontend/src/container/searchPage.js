@@ -23,7 +23,16 @@ const SearchPage = () => {
 
     const getRestaurant = async () => {
         // TODO Part I-3-b: get information of restaurants from DB
-        axios.get( "http://localhost:3000" ,{ params: { ID: state } })    
+        const res = await axios.get("http://localhost:4000/api/getSearch", {
+            params: {
+                priceFilter: state.priceFilter,
+                mealFilter: state.mealFilter,
+                typeFilter: state.typeFilter,
+                sortBy: state.sortBy,
+            }
+        })
+        setRestaurant(res.data.contents)
+  
     }
 
     useEffect(() => {
@@ -41,7 +50,8 @@ const SearchPage = () => {
             priceText += "$"
         return (priceText)
     }
-    console.log(restaurants)
+    // console.log(restaurants)
+
 
     return (
 
@@ -49,22 +59,19 @@ const SearchPage = () => {
             {
                 restaurants.map((item) =>(
                     // TODO Part I-2: search page front-end
-                    <>
                     <div className='resBlock' id = {item.id} key = {item.id}>
                         <div className= 'resImgContainer'> 
-                            <img className='reslmg' src={item.img}/>
+                            <img className='resImg' src={item.img}/>
                         </div>
-                        <div className='reslnfo'>
+                        <div className='resInfo'>
                             <div className='title'>
                                 <p className='name'>{item.name}</p>
                                 <p className='price'>{getPrice(item.price)}</p>
-                                <p className='distance'>{item.distamce / 1000} km</p>
+                                <p className='distance'>{item.distance / 1000} km</p>
                             </div>
-                            <p className='description'>{item.tag}</p>
+                            <p className='description'>{item.tag.join(', ')}</p>
                         </div>
-                       
                     </div>
-                    </>
                 ))
             }
         </div>
