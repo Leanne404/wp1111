@@ -44,11 +44,6 @@ function Row({
       variables: {
         // TODO 4 Use `updateItem` and pass the correct variables
         id: item.id,
-        name: item.name,
-        description: item.description,
-        date: item.date,
-        amount: item.amount,
-        category: item.category,
         // TODO End
         onError: (err) => {
           // eslint-disable-next-line no-console
