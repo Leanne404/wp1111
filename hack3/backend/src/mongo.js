@@ -13,7 +13,6 @@ async function connect() {
   });
 
   const mongo = mongoose.connection
-  const port = process.env.port || 5000
 
   mongo.once('open', () => {
     console.log('mongodb connected')
