@@ -1,13 +1,19 @@
-import express from 'express';
-import routes from './src/routes';
-import cors from 'cors';
-import db from './src/db';
+import path from "path";
+
+import express from "express";
+import cors from "cors";
 
 const app = express();
-
+// init middleware
 if (process.env.NODE_ENV === "development") {
-	app.use(cors());
+  app.use(cors());
 }
+// define routes
+app.get("/api", (req, res) => {
+  // send the request back to the client
+  console.log("GET /api");
+  res.send({ message: "Hello from the server!" }).status(200);
+});
 
 if (process.env.NODE_ENV === "production") {
   const __dirname = path.resolve();
@@ -17,16 +23,9 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-
+// define server
 const port = process.env.PORT || 4000;
 
-app.listen(port, () =>
-  console.log(`Example app listening on port ${port}!`),
-);
-
-app.use(cors());
-app.use(express.json());
-app.use('/', routes);
-
-db.connect();
- 
+app.listen(port, () => {
+  console.log(`Server is up on port ${port}.`);
+});
