@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: `http://localhost:4000/`,
+  baseURL: `https://wp1111-imikhp5tt-leanne404.vercel.app`,
 });
 
 export default instance;
