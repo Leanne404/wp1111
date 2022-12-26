@@ -1,7 +1,7 @@
 # HW9
 全端網址：https://wp1111-t9uv.vercel.app
 
-From hw6，功能跟基本要求一樣。
+From hw6，功能跟基本要求一樣，使用時要等一下才會出現結果。
 
 流程（按照 vercel 流程）：
 1. 增加 vercel.json
